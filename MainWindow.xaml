@@ -6,7 +6,31 @@
         xmlns:local="clr-namespace:FilterBuilder"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid Column="3" Row="3">
-        <Button Click="Click_LoadFile">Load Filter</Button>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        
+        <Button Grid.Row="1" Grid.Column="2" Margin="10,0,0,0" Name="btn_NewFile">New Filter</Button>
+        <Button Grid.Row="1" Grid.Column="1"  Name="btn_LoadFile" Click="Click_LoadFile">Load Filter</Button>
+        <ListView Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1" Margin="0,10,0,0" Name="FilterList">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Path" Width="Auto" DisplayMemberBinding="{Binding Path}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
