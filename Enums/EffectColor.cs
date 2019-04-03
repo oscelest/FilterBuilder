@@ -1,3 +1,5 @@
+using System;
+
 namespace FilterBuilder.Enums {
     public sealed class EffectColor {
         private readonly string _name;
@@ -15,6 +17,25 @@ namespace FilterBuilder.Enums {
 
         public override string ToString() {
             return _name;
+        }
+
+        public static EffectColor Parse(string color) {
+            switch (color) {
+                case "Red":
+                    return EffectColor.RED;
+                case "Blue":
+                    return EffectColor.BLUE;
+                case "Brown":
+                    return EffectColor.BROWN;
+                case "Green":
+                    return EffectColor.GREEN;
+                case "White":
+                    return EffectColor.WHITE;
+                case "Yellow":
+                    return EffectColor.YELLOW;
+                default:
+                    throw new NotImplementedException();
+            }
         }
     }
 }

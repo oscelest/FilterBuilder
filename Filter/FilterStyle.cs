@@ -1,28 +1,31 @@
 using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Windows.Media;
 using FilterBuilder.Enums;
+using FilterBuilder.Helper;
 
 namespace FilterBuilder.Filter {
     public class FilterStyle {
-        public Color BackgroundColor;
-        public Color BorderColor;
-        public int FontSize;
+        public RGBAColor BackgroundColor;
+        public RGBAColor BorderColor;
+        public RGBAColor TextColor;
+        public int? FontSize;
 
-        public int MinimapIconSize;
-        public EffectColor MinimapIconColor;
-        public EffectShape MinimapIconShape;
+        public MinimapIcon MinimapIcon;
+        public BeamEffect BeamEffect;
+        public AlertSound AlertSound;
 
-        public EffectColor BeamEffectColor;
-        public Boolean BeamEffectTemporary;
-
-        public int AlertSoundType;
-        public int AlertSoundVolume;
-
-        public FilterStyle() { }
-
-        public void SetBackgroundColor(byte red, byte green, byte blue, byte alpha) {
-            this.BackgroundColor.R = red;
-            
+        public override string ToString() {
+            var conditions = new StringBuilder();
+            if (BackgroundColor != null) conditions.AppendLine($"    SetBackgroundColor {BackgroundColor}");
+            if (BorderColor != null) conditions.AppendLine($"    SetBorderColor {BorderColor}");
+            if (TextColor != null) conditions.AppendLine($"    SetTextColor {TextColor}");
+            if (FontSize != null) conditions.AppendLine($"    SetFontSize {FontSize}");
+            if (MinimapIcon != null) conditions.AppendLine(MinimapIcon.ToString());
+            if (BeamEffect != null) conditions.AppendLine(BeamEffect.ToString());
+            if (AlertSound != null) conditions.AppendLine(AlertSound.ToString());
+            return conditions.ToString();
         }
     }
 }

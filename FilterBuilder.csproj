@@ -34,9 +34,14 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="mscorlib" />
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
+        <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+          <HintPath>packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
         <Reference Include="System.Xml" />
         <Reference Include="System.Xaml">
             <RequiredTargetFramework>4.0</RequiredTargetFramework>
@@ -58,14 +63,21 @@
             <DependentUpon>App.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
-        <Compile Include="Enums\ConditionOperator.cs" />
+        <Compile Include="Enums\Tag.cs" />
+        <Compile Include="Enums\EqualityOperator.cs" />
         <Compile Include="Enums\EffectColor.cs" />
         <Compile Include="Enums\EffectShape.cs" />
-        <Compile Include="Enums\RarityCondition.cs" />
+        <Compile Include="Enums\Rarity.cs" />
         <Compile Include="Filter\Filter.cs" />
         <Compile Include="Filter\FilterBlock.cs" />
         <Compile Include="Filter\FilterCondition.cs" />
+        <Compile Include="Filter\FilterLine.cs" />
         <Compile Include="Filter\FilterStyle.cs" />
+        <Compile Include="Helper\AlertSound.cs" />
+        <Compile Include="Helper\BeamEffect.cs" />
+        <Compile Include="Helper\EqualityCondition.cs" />
+        <Compile Include="Helper\RBGAColor.cs" />
+        <Compile Include="Helper\MinimapIcon.cs" />
         <Compile Include="MainWindow.xaml.cs">
             <DependentUpon>MainWindow.xaml</DependentUpon>
             <SubType>Code</SubType>

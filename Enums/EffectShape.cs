@@ -1,3 +1,5 @@
+using System;
+
 namespace FilterBuilder.Enums {
     public sealed class EffectShape {
         private readonly string _name;
@@ -15,6 +17,25 @@ namespace FilterBuilder.Enums {
 
         public override string ToString() {
             return _name;
+        }
+
+        public static EffectShape Parse(string shape) {
+            switch (shape) {
+                case "Star":
+                    return EffectShape.STAR;
+                case "Circle":
+                    return EffectShape.CIRCLE;
+                case "Square":
+                    return EffectShape.SQUARE;
+                case "Diamond":
+                    return EffectShape.DIAMOND;
+                case "Hexagon":
+                    return EffectShape.HEXAGON;
+                case "Triangle":
+                    return EffectShape.TRIANGLE;
+                default:
+                    throw new NotImplementedException();
+            }
         }
     }
 }

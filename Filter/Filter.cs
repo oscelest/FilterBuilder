@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Net.Mime;
+using System.Runtime.CompilerServices;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace FilterBuilder.Filter {
@@ -12,7 +15,7 @@ namespace FilterBuilder.Filter {
         static Filter() {
             FileName = null;
             FilePath = null;
-            Blocks = null;
+            Blocks = new List<FilterBlock>();
         }
 
         public static void LoadFile(string path) {
@@ -23,9 +26,16 @@ namespace FilterBuilder.Filter {
             System.Diagnostics.Debug.WriteLine("File loaded: " + FileName);
 
             foreach (Match m in new Regex(@"(Show|Hide)(\r\n\s{4}[\w =]+)+").Matches(File.ReadAllText(path))) {
-                Debug.WriteLine(m.Value);
                 Blocks.Add(new FilterBlock(m.Value));
             }
+            
+            SaveFile();
+        }
+
+        public static void SaveFile() {
+            var content = new StringBuilder();
+            Blocks.ForEach(block => { content.AppendLine(block.ToString()); });
+            Debug.Write(content);
         }
     }
 }
