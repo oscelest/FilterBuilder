@@ -1,6 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows;
+using System.Windows.Media;
 using FilterBuilder.Enums;
 using FilterBuilder.Helper;
 
@@ -17,50 +23,23 @@ namespace FilterBuilder.Filter {
         public EqualityCondition<int> StackSize { get; set; }
         public EqualityCondition<int> GemLevel { get; set; }
         public EqualityCondition<int> MapTier { get; set; }
-        public string SocketGroup { get; set; }
-        public List<string> Class { get; set; }
-        public List<string> BaseType { get; set; }
-        public List<string> ExplicitMods { get; set; }
-        public List<string> Enchantments { get; set; }
-        public bool? HasEnchantment { get; set; }
-        public bool? Identified { get; set; }
-        public bool? Corrupted { get; set; }
-        public bool? ElderItem { get; set; }
-        public bool? ShaperItem { get; set; }
-        public bool? FracturedItem { get; set; }
-        public bool? SynthesizedItem { get; set; }
-        public bool? ShapedMap { get; set; }
+        public ValueCondition<string> SocketGroup { get; set; }
+        public ValueCondition<List<string>> Class { get; set; }
+        public ValueCondition<List<string>> BaseType { get; set; }
+        public ValueCondition<List<string>> ExplicitMods { get; set; }
+        public ValueCondition<List<string>> Enchantments { get; set; }
+        public ValueCondition<bool> HasEnchantment { get; set; }
+        public ValueCondition<bool> Identified { get; set; }
+        public ValueCondition<bool> Corrupted { get; set; }
+        public ValueCondition<bool> ElderItem { get; set; }
+        public ValueCondition<bool> ShaperItem { get; set; }
+        public ValueCondition<bool> FracturedItem { get; set; }
+        public ValueCondition<bool> SynthesizedItem { get; set; }
+        public ValueCondition<bool> ShapedMap { get; set; }
 
         public override string ToString() {
             var conditions = new StringBuilder();
-            if (Rarity != null) conditions.AppendLine(Rarity.ToString());
-
-            if (ItemLevel != null) conditions.AppendLine($"    ItemLevel {ItemLevel}");
-            if (DropLevel != null) conditions.AppendLine($"    DropLevel {DropLevel}");
-            if (Quality != null) conditions.AppendLine($"    Quality {Quality}");
-            if (Sockets != null) conditions.AppendLine($"    Sockets {Sockets}");
-            if (LinkedSockets != null) conditions.AppendLine($"    LinkedSockets {LinkedSockets}");
-            if (Height != null) conditions.AppendLine($"    Height {Height}");
-            if (Width != null) conditions.AppendLine($"    Width {Width}");
-            if (StackSize != null) conditions.AppendLine($"    StackSize {StackSize}");
-            if (GemLevel != null) conditions.AppendLine($"    GemLevel {GemLevel}");
-            if (MapTier != null) conditions.AppendLine($"    MapTier {MapTier}");
-
-            if (SocketGroup != null) conditions.AppendLine($"    SocketGroup {SocketGroup}");
-
-            if (Class != null) conditions.AppendLine($"    Class \"{string.Join("\" \"", Class.ToArray())}\"");
-            if (BaseType != null) conditions.AppendLine($"    BaseType \"{string.Join("\" \"", BaseType.ToArray())}\"");
-            if (ExplicitMods != null) conditions.AppendLine($"    HasExplicitMod \"{string.Join("\" \"", ExplicitMods.ToArray())}\"");
-            if (Enchantments != null) conditions.AppendLine($"    HasEnchantment \"{string.Join("\" \"", Enchantments.ToArray())}\"");
-
-            if (HasEnchantment != null) conditions.AppendLine($"    AnyEnchantment {(Identified == true ? "True" : "False")}");
-            if (Identified != null) conditions.AppendLine($"    Identified {(Identified == true ? "True" : "False")}");
-            if (Corrupted != null) conditions.AppendLine($"    Corrupted {(Corrupted == true ? "True" : "False")}");
-            if (ElderItem != null) conditions.AppendLine($"    ElderItem {(ElderItem == true ? "True" : "False")}");
-            if (ShaperItem != null) conditions.AppendLine($"    ShaperItem {(ShaperItem == true ? "True" : "False")}");
-            if (FracturedItem != null) conditions.AppendLine($"    FracturedItem {(FracturedItem == true ? "True" : "False")}");
-            if (SynthesizedItem != null) conditions.AppendLine($"    SynthesizedItem {(SynthesizedItem == true ? "True" : "False")}");
-            if (ShapedMap != null) conditions.AppendLine($"    ShapedMap {(ShapedMap == true ? "True" : "False")}");
+            foreach (var line in GetType().GetProperties().Where((prop) => prop.GetValue(this) != null).Select((prop) => prop.GetValue(this))) conditions.AppendLine(line.ToString());
             return conditions.ToString();
         }
     }

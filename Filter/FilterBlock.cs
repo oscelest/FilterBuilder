@@ -53,61 +53,61 @@ namespace FilterBuilder.Filter {
         private object ParseTag(string tag, List<string> values) {
             switch (tag) {
                 case "ItemLevel":
-                    return Conditions.ItemLevel = new EqualityCondition<int>(EqualityOperator.Parse(values[0]), int.Parse(values[1]));
+                    return Conditions.ItemLevel = new EqualityCondition<int>(tag, values[0], values[1]);
                 case "DropLevel":
-                    return Conditions.DropLevel = new EqualityCondition<int>(EqualityOperator.Parse(values[0]), int.Parse(values[1]));
+                    return Conditions.DropLevel = new EqualityCondition<int>(tag, values[0], values[1]);
                 case "Quality":
-                    return Conditions.Quality = new EqualityCondition<int>(EqualityOperator.Parse(values[0]), int.Parse(values[1]));
+                    return Conditions.Quality = new EqualityCondition<int>(tag, values[0], values[1]);
                 case "Sockets":
-                    return Conditions.Sockets = new EqualityCondition<int>(EqualityOperator.Parse(values[0]), int.Parse(values[1]));
+                    return Conditions.Sockets = new EqualityCondition<int>(tag, values[0], values[1]);
                 case "LinkedSockets":
-                    return Conditions.LinkedSockets = new EqualityCondition<int>(EqualityOperator.Parse(values[0]), int.Parse(values[1]));
+                    return Conditions.LinkedSockets = new EqualityCondition<int>(tag, values[0], values[1]);
                 case "Height":
-                    return Conditions.Height = new EqualityCondition<int>(EqualityOperator.Parse(values[0]), int.Parse(values[1]));
+                    return Conditions.Height = new EqualityCondition<int>(tag, values[0], values[1]);
                 case "Width":
-                    return Conditions.Width = new EqualityCondition<int>(EqualityOperator.Parse(values[0]), int.Parse(values[1]));
+                    return Conditions.Width = new EqualityCondition<int>(tag, values[0], values[1]);
                 case "StackSize":
-                    return Conditions.StackSize = new EqualityCondition<int>(EqualityOperator.Parse(values[0]), int.Parse(values[1]));
+                    return Conditions.StackSize = new EqualityCondition<int>(tag, values[0], values[1]);
                 case "GemLevel":
-                    return Conditions.GemLevel = new EqualityCondition<int>(EqualityOperator.Parse(values[0]), int.Parse(values[1]));
+                    return Conditions.GemLevel = new EqualityCondition<int>(tag, values[0], values[1]);
                 case "MapTier":
-                    return Conditions.MapTier = new EqualityCondition<int>(EqualityOperator.Parse(values[0]), int.Parse(values[1]));
+                    return Conditions.MapTier = new EqualityCondition<int>(tag, values[0], values[1]);
                 case "Rarity":
-                    return Conditions.Rarity = new EqualityCondition<Rarity>(EqualityOperator.Parse(values[0]), Rarity.Parse(values[1]));
+                    return Conditions.Rarity = new EqualityCondition<Rarity>(tag, values[0], values[1]);
                 case "Class":
-                    return Conditions.Class = values;
+                    return Conditions.Class = new ValueCondition<List<string>>(tag, values);
                 case "BaseType":
-                    return Conditions.BaseType = values;
+                    return Conditions.BaseType = new ValueCondition<List<string>>(tag, values);
                 case "HasExplicitMod":
-                    return Conditions.ExplicitMods = values;
+                    return Conditions.ExplicitMods = new ValueCondition<List<string>>(tag, values);
                 case "HasEnchantment":
-                    return Conditions.Enchantments = values;
+                    return Conditions.Enchantments = new ValueCondition<List<string>>(tag, values);
                 case "SocketGroup":
-                    return Conditions.SocketGroup = values[0];
+                    return Conditions.SocketGroup = new ValueCondition<string>(tag, values);
                 case "AnyEnchantment":
-                    return Conditions.HasEnchantment = values[0] == "True";
+                    return Conditions.HasEnchantment = new ValueCondition<bool>(tag, values);
                 case "Identified":
-                    return Conditions.Identified = values[0] == "True";
+                    return Conditions.Identified = new ValueCondition<bool>(tag, values);
                 case "Corrupted":
-                    return Conditions.Corrupted = values[0] == "True";
+                    return Conditions.Corrupted = new ValueCondition<bool>(tag, values);
                 case "ElderItem":
-                    return Conditions.ElderItem = values[0] == "True";
+                    return Conditions.ElderItem = new ValueCondition<bool>(tag, values);
                 case "ShaperItem":
-                    return Conditions.ShaperItem = values[0] == "True";
+                    return Conditions.ShaperItem = new ValueCondition<bool>(tag, values);
                 case "FracturedItem":
-                    return Conditions.FracturedItem = values[0] == "True";
+                    return Conditions.FracturedItem = new ValueCondition<bool>(tag, values);
                 case "SynthesizedItem":
-                    return Conditions.SynthesizedItem = values[0] == "True";
+                    return Conditions.SynthesizedItem = new ValueCondition<bool>(tag, values);
                 case "ShapedMap":
-                    return Conditions.ShapedMap = values[0] == "True";
+                    return Conditions.ShapedMap = new ValueCondition<bool>(tag, values);
                 case "SetBackgroundColor":
-                    return Styling.BackgroundColor = new RGBAColor(int.Parse(values[0]), int.Parse(values[1]), int.Parse(values[2]), int.Parse(values[3]));
+                    return Styling.BackgroundColor = new Color(tag, values);
                 case "SetBorderColor":
-                    return Styling.BorderColor = new RGBAColor(int.Parse(values[0]), int.Parse(values[1]), int.Parse(values[2]), int.Parse(values[3]));
+                    return Styling.BorderColor = new Color(tag, values);
                 case "SetTextColor":
-                    return Styling.TextColor = new RGBAColor(int.Parse(values[0]), int.Parse(values[1]), int.Parse(values[2]), int.Parse(values[3]));
+                    return Styling.TextColor = new Color(tag, values);
                 case "SetFontSize":
-                    return Styling.FontSize = int.Parse(values[0]);
+                    return Styling.FontSize = new FontSize(tag, values[0]);
                 case "PlayAlertSound":
                     return Styling.AlertSound = new AlertSound(int.Parse(values[0]), int.Parse(values[1]), false, null);
                 case "PlayAlertSoundPositional":
