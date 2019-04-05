@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using Microsoft.Win32;
 
 namespace FilterBuilder {
@@ -21,8 +24,24 @@ namespace FilterBuilder {
 
             if (fileSelected == true) {
                 System.Diagnostics.Debug.WriteLine("File found");
+                Text_Path.Text = fileDialog.FileName;
                 Filter.Filter.LoadFile(fileDialog.FileName);
+                this.Title = "Filter Builder - " + Filter.Filter.FileName;
+                ComboBox_Blocks.ItemsSource = Filter.Filter.Blocks.Select(x => x.Name);
             }
+        }
+
+        public void Click_SaveFile(object sender, RoutedEventArgs e) {
+            Filter.Filter.SaveFile();
+        }
+
+        public void Selection_FilterBlock(object sender, SelectionChangedEventArgs selectionChangedEventArgs) {
+            Debug.WriteLine(selectionChangedEventArgs.AddedItems[0]);
+        }
+
+        private void Click_AddBlock(object sender, RoutedEventArgs e) {
+            Filter.Filter.Blocks.Add(new Filter.FilterBlock(""));
+            ComboBox_Blocks.ItemsSource = Filter.Filter.Blocks.Select(x => x.Name);
         }
     }
 }

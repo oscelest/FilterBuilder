@@ -17,15 +17,31 @@ namespace FilterBuilder.Filter {
         public FilterCondition Conditions;
         public FilterStyle Styling;
 
+        public static int NextId = 0;
+
         public FilterBlock(string block = "") {
             Conditions = new FilterCondition();
             Styling = new FilterStyle();
+            Visibility = true;
 
-            using (var reader = new StringReader(block)) {
-                var line = reader.ReadLine();
-                this.Visibility = line == null || line == "Show";
-                while ((line = reader.ReadLine()) != null) ParseLine(line.Trim(' '));
+            var read = new StringReader(block);
+            string line;
+            while ((line = read.ReadLine()) != null) {
+                Match match;
+                if ((match = new Regex(@"^#@(?<Decorator>\w+) ""(?<Value>[\w ]+)""$").Match(line)).Success) {
+                    var decorator = match.Groups["Decorator"].Captures[0].Value;
+                    var value = match.Groups["Value"].Captures[0].Value;
+                    if (decorator == "Name") Name = value;
+                }
+                else if ((match = new Regex(@"^(?<Visibility>Show|Hide)$").Match(line)).Success) {
+                    Visibility = match.Groups["Visibility"].Captures[0].Value == "Show";
+                }
+                else if ((match = new Regex(@"^\s{4}(?<Tag>\w+)(?:\s(?<Values>[<=!]+|[\w""-]+)+)+$").Match(line)).Success) {
+                    ParseTag(match.Groups["Tag"].Captures[0].Value, match.Groups["Values"].Captures.Cast<Capture>().Select(capture => capture.Value).ToList());
+                }
             }
+
+            if (Name == null) Name = $"Filter Block {NextId++}";
         }
 
         public void ResetCondition() {
@@ -38,16 +54,11 @@ namespace FilterBuilder.Filter {
 
         public override string ToString() {
             var content = new StringBuilder();
+            if (Name != null) content.AppendLine($"#@Name \"{Name}\"");
             content.AppendLine(Visibility ? "Show" : "Hide");
-            content.Append(Conditions.ToString());
-            content.Append(Styling.ToString());
+            content.Append(Conditions);
+            content.Append(Styling);
             return content.ToString();
-        }
-
-        private void ParseLine(string line) {
-            var match = new Regex(@"^(?<Tag>\w+)(?:\s(?<Values>[<=!]+|[\w""-]+)+)+$").Match(line);
-            if (match.Groups["Tag"].Captures.Count == 0 || match.Groups["Values"].Captures.Count == 0) return;
-            ParseTag(match.Groups["Tag"].Captures[0].Value, match.Groups["Values"].Captures.Cast<Capture>().Select(capture => capture.Value).ToList());
         }
 
         private object ParseTag(string tag, List<string> values) {

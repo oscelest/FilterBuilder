@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FilterBuilder"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button Click="Click_LoadFile">Load Filter</Button>
+        Title="Filter Builder" Height="350" Width="525">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <Button Name="Button_Load" Grid.Row="0" Grid.Column="0" Click="Click_LoadFile">Load</Button>
+        <TextBlock Name="Text_Path" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"></TextBlock>
+        <Button Name="Button_Save" Grid.Row="0" Grid.Column="4" Click="Click_SaveFile">Save</Button>
+        <ComboBox Name="ComboBox_Blocks" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" SelectionChanged="Selection_FilterBlock"></ComboBox>
+        <Button Name="Button_AddBlock" Grid.Row="1" Grid.Column="4" Click="Click_AddBlock">Add Block</Button>
     </Grid>
 </Window>

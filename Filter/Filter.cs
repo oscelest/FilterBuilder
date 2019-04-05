@@ -22,14 +22,11 @@ namespace FilterBuilder.Filter {
             FilePath = path;
             FileName = Path.GetFileName(path);
             Blocks = new List<FilterBlock>();
+            FilterBlock.NextId = 0;
 
-            System.Diagnostics.Debug.WriteLine("File loaded: " + FileName);
-
-            foreach (Match m in new Regex(@"(Show|Hide)(\r\n\s{4}[\w =]+)+").Matches(File.ReadAllText(path))) {
+            foreach (Match m in new Regex(@"(?:(?:#@\w+ ""([\w ]+)""\r\n)+)?(?:\r\n)*(Show|Hide)(?:(?:\r\n\s{4})([\w =]+))+").Matches(File.ReadAllText(path))) {
                 Blocks.Add(new FilterBlock(m.Value));
             }
-            
-            SaveFile();
         }
 
         public static void SaveFile() {
