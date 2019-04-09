@@ -15,8 +15,72 @@
             <view:HomeView />
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type viewmodel:UniqueViewModel}">
-            <view:UniqueView />
+        <DataTemplate DataType="{x:Type viewmodel:ChanceBaseViewModel}">
+            <view:ChanceBaseView />
         </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewmodel:CraftingBaseViewModel}">
+            <view:CraftingBaseView />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewmodel:CurrencyViewModel}">
+            <view:CurrencyView />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewmodel:DivinationCardViewModel}">
+            <view:DivinationCardView />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewmodel:EssenceViewModel}">
+            <view:EssenceView />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewmodel:FlaskViewModel}">
+            <view:FlaskView />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewmodel:FossilViewModel}">
+            <view:FossilView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodel:FragmentViewModel}">
+            <view:FragmentView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodel:LevelingViewModel}">
+            <view:LevelingView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodel:MapViewModel}">
+            <view:MapView />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewmodel:SkillGemViewModel}">
+            <view:SkillGemView />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewmodel:UniqueAccessoryViewModel}">
+            <view:UniqueAccessoryView />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewmodel:UniqueArmourViewModel}">
+            <view:UniqueArmourView />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewmodel:UniqueWeaponViewModel}">
+            <view:UniqueWeaponView />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewmodel:VendorRecipeViewModel}">
+            <view:VendorRecipeView />
+        </DataTemplate>
+
+
+        <Style x:Key="NavigationButton" TargetType="Button">
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="5 5" />
+            <Setter Property="Margin" Value="5 0" />
+        </Style>
     </Application.Resources>
 </Application>

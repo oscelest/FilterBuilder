@@ -1,8 +1,8 @@
 ﻿using System.Windows.Controls;
 
 namespace FilterBuilder.View {
-    public partial class UniqueView {
-        public UniqueView() {
+    public partial class UniqueAccessoryView {
+        public UniqueAccessoryView() {
             InitializeComponent();
         }
     }

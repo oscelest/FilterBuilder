@@ -8,56 +8,23 @@
         DataContext="{Binding Main, Source={StaticResource Locator}}"
         Title="Filter Builder" Width="800" Height="600" Background="DarkGray">
     <DockPanel LastChildFill="True">
-        <Grid DockPanel.Dock="Top" Height="40">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-
-            <Button Grid.Column="0" Command="{Binding ChangeViewCommand}" CommandParameter="{x:Static enum:Page.HOME}" Cursor="Hand" BorderThickness="0" Background="Transparent">
-                <Image Source="../Resources/Images/Home.png" />
-            </Button>
-
-            <Button Grid.Column="1" Command="{Binding ChangeViewCommand}" CommandParameter="{x:Static enum:Page.UNIQUES}" Cursor="Hand" BorderThickness="0" Background="Transparent">
-                <Image Source="../Resources/Images/Currency.png" />
-            </Button>
-
-            <Button Grid.Column="2" Command="{Binding ChangeViewCommand}" CommandParameter="{x:Static enum:Page.UNIQUES}" Cursor="Hand" BorderThickness="0" Background="Transparent">
-                <Image Source="../Resources/Images/DivinationCard.png" />
-            </Button>
-
-            <Button Grid.Column="3" Command="{Binding ChangeViewCommand}" CommandParameter="{x:Static enum:Page.UNIQUES}" Cursor="Hand" BorderThickness="0" Background="Transparent">
-                <Image Source="../Resources/Images/Map.png" />
-            </Button>
-
-            <Button Grid.Column="4" Command="{Binding ChangeViewCommand}" CommandParameter="{x:Static enum:Page.UNIQUES}" Cursor="Hand" BorderThickness="0" Background="Transparent">
-                <Image Source="../Resources/Images/Fossil.png" />
-            </Button>
-
-            <Button Grid.Column="5" Command="{Binding ChangeViewCommand}" CommandParameter="{x:Static enum:Page.UNIQUES}" Cursor="Hand" BorderThickness="0" Background="Transparent">
-                <Image Source="../Resources/Images/Essence.png" />
-            </Button>
-
-            <Button Grid.Column="6" Command="{Binding ChangeViewCommand}" CommandParameter="{x:Static enum:Page.UNIQUES}" Cursor="Hand" BorderThickness="0" Background="Transparent">
-                <Image Source="../Resources/Images/UniqueWeapon.png" />
-            </Button>
-
-            <Button Grid.Column="7" Command="{Binding ChangeViewCommand}" CommandParameter="{x:Static enum:Page.UNIQUES}" Cursor="Hand" BorderThickness="0" Background="Transparent">
-                <Image Source="../Resources/Images/UniqueArmour.png" />
-            </Button>
-
-            <Button Grid.Column="8" Command="{Binding ChangeViewCommand}" CommandParameter="{x:Static enum:Page.UNIQUES}" Cursor="Hand" BorderThickness="0" Background="Transparent">
-                <Image Source="../Resources/Images/UniqueAccessory.png" />
-            </Button>
-        </Grid>
+        
+        <ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding NavigationViewModels.Values}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="16" Rows="1" Height="40"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding Key}">
+                        <Image Source="{Binding Image}" />
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
 
         <ContentControl Content="{Binding CurrentViewModel}" />
+        
     </DockPanel>
 </Window>
