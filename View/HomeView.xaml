@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="FilterBuilder.View.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d">
+    <StackPanel>
+        <Label> Current filter name:</Label>
+        <TextBox Name="FilterName" Margin="5, 0, 5, 0" Background="Transparent" BorderThickness="0 0 0 1" BorderBrush="Gray" />
+        <StackPanel>
+        <Label> Current filter name:</Label>
+        <TextBox Name="FilterPath" Margin="5, 0, 5, 0" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows.Media;
-using FilterBuilder.Enums;
+using FilterBuilder.Enum;
 using FilterBuilder.Helper;
 using Color = FilterBuilder.Helper.Color;
 

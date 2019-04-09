@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Media;
-using FilterBuilder.Enums;
+using FilterBuilder.Enum;
 using FilterBuilder.Helper;
 
 namespace FilterBuilder.Filter {

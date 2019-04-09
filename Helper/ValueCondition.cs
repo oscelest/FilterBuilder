@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using FilterBuilder.Enums;
+using FilterBuilder.Enum;
 
 namespace FilterBuilder.Helper {
     public class ValueCondition<T> {
-        public Tag Tag;
-        public T Value;
+        public Tag Tag { get; }
+        public T Value { get; }
 
         public ValueCondition(Tag tag, T value) {
             Tag = tag;

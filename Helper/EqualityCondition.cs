@@ -1,12 +1,12 @@
 using System;
 using System.Diagnostics;
-using FilterBuilder.Enums;
+using FilterBuilder.Enum;
 
 namespace FilterBuilder.Helper {
     public class EqualityCondition<T> {
-        public Tag Tag;
-        public EqualityOperator Operator;
-        public T Value;
+        public Tag Tag { get; }
+        public EqualityOperator Operator { get; }
+        public T Value { get; }
 
         public EqualityCondition(Tag tag, EqualityOperator op, T value) {
             Tag = tag;

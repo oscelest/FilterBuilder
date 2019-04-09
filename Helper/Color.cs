@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using FilterBuilder.Enums;
+using FilterBuilder.Enum;
 
 namespace FilterBuilder.Helper {
     public class Color {
-        public Tag Tag { get;  }
+        public Tag Tag { get; }
         public int Red { get; }
         public int Green { get; }
         public int Blue { get; }
@@ -17,7 +17,7 @@ namespace FilterBuilder.Helper {
             Blue = int.Parse(values[2]);
             Alpha = values.ElementAtOrDefault(1) != null ? int.Parse(values[3]) : 0;
         }
-        
+
         public Color(Tag tag, List<string> values) {
             Tag = tag;
             Red = int.Parse(values[0]);
@@ -25,7 +25,7 @@ namespace FilterBuilder.Helper {
             Blue = int.Parse(values[2]);
             Alpha = values.ElementAtOrDefault(1) != null ? int.Parse(values[3]) : 0;
         }
-        
+
         public Color(Tag tag, List<int> values) {
             Tag = tag;
             Red = values[0];
