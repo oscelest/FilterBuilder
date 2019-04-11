@@ -1,6 +1,6 @@
 using System;
 
-namespace FilterBuilder.Enums {
+namespace FilterBuilder.Enum {
     public sealed class Tag {
         private readonly string _name;
 

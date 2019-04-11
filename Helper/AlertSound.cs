@@ -1,4 +1,4 @@
-using FilterBuilder.Enums;
+using FilterBuilder.Enum;
 
 namespace FilterBuilder.Helper {
     public class AlertSound {
