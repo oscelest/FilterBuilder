@@ -1,11 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Input;
-using FilterBuilder.Interfaces;
 using FilterBuilder.Model;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using System.Net.Http;
+using System.Reflection;
+using System.Windows;
+using FilterBuilder.Helper;
+using Newtonsoft.Json;
 
 namespace FilterBuilder.ViewModel {
     public class MainViewModel : ViewModelBase {
@@ -41,6 +46,7 @@ namespace FilterBuilder.ViewModel {
             Title = "Item Filter Builder";
             CurrentFilter = new Filter();
             ExecuteChangeViewCommand(Enum.View.HOME);
+            ExecuteCheckUpdateCommand();
             ChangeViewCommand = new RelayCommand<Enum.View>(ExecuteChangeViewCommand);
             OpenFilterCommand = new RelayCommand(ExecuteOpenFilterCommand);
             SaveFilterCommand = new RelayCommand(ExecuteSaveFilterCommand);
@@ -61,7 +67,7 @@ namespace FilterBuilder.ViewModel {
             if (fileDialog.ShowDialog() != true) return;
             CurrentFilter.Name = Path.GetFileName(fileDialog.FileName);
             CurrentFilter.Path = Path.GetDirectoryName(fileDialog.FileName);
-            RaisePropertyChanged($"Filter");
+            RaisePropertyChanged($"CurrentFilter");
         }
 
         private void ExecuteSaveFilterCommand() {
@@ -70,14 +76,39 @@ namespace FilterBuilder.ViewModel {
 
         private void ExecuteLoadFilterCommand() {
             // Filter.Filter.LoadFile(fileDialog.FileName);
+            if (!File.Exists(Path.Combine(CurrentFilter.Path, CurrentFilter.Name))) {
+                MessageBox.Show("File could not be loaded.");
+                return;
+            }
             Title = $"Filter Builder - {CurrentFilter.Name}";
             RaisePropertyChanged($"Title");
-            RaisePropertyChanged($"Filter");
+            RaisePropertyChanged($"CurrentFilter");
         }
 
         private void ExecuteChangeViewCommand(Enum.View p) {
             CurrentViewModel = ViewModels[p];
+            
             RaisePropertyChanged($"CurrentViewModel");
+        }
+
+        private async void ExecuteCheckUpdateCommand() {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Add("User-Agent", "C# System.Net.HTTP");
+            try {
+                var responseString = await client.GetStringAsync("https://api.github.com/repos/oscelest/FilterBuilder/releases");
+                Debug.WriteLine(responseString);
+                var releases = JsonConvert.DeserializeObject<List<Release>>(responseString);
+                foreach (var release in releases) {
+                    
+                    Debug.WriteLine(release.Id);
+                    Debug.WriteLine(release.Author.Id);
+                    var version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                    Debug.WriteLine(version);
+                }
+            }
+            catch (Exception e) {
+                Debug.WriteLine(e);
+            }
         }
     }
 }
