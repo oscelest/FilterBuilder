@@ -1,4 +1,4 @@
-./packages/
-./obj/
-./debug/
-./idea/
+packages/
+obj/
+debug/
+.idea/
