@@ -99,7 +99,6 @@ namespace FilterBuilder.ViewModel {
                 Debug.WriteLine(responseString);
                 var releases = JsonConvert.DeserializeObject<List<Release>>(responseString);
                 foreach (var release in releases) {
-                    
                     Debug.WriteLine(release.Id);
                     Debug.WriteLine(release.Author.Id);
                     var version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
