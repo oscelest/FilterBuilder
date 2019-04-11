@@ -1,4 +1,4 @@
-﻿using FilterBuilder.Enum;
+﻿using System.Collections.Generic;
 using FilterBuilder.Interfaces;
 using GalaSoft.MvvmLight;
 

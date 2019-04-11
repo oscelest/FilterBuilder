@@ -86,11 +86,6 @@
     <Compile Include="Enum\EffectColor.cs" />
     <Compile Include="Enum\EffectShape.cs" />
     <Compile Include="Enum\Rarity.cs" />
-    <Compile Include="Filter\Filter.cs" />
-    <Compile Include="Filter\FilterBlock.cs" />
-    <Compile Include="Filter\FilterCondition.cs" />
-    <Compile Include="Filter\FilterLine.cs" />
-    <Compile Include="Filter\FilterStyle.cs" />
     <Compile Include="Helper\AlertSound.cs" />
     <Compile Include="Helper\BeamEffect.cs" />
     <Compile Include="Helper\EqualityCondition.cs" />
@@ -98,7 +93,9 @@
     <Compile Include="Helper\FontSize.cs" />
     <Compile Include="Helper\MinimapIcon.cs" />
     <Compile Include="Helper\ValueCondition.cs" />
+    <Compile Include="Interfaces\IFilterCategory.cs" />
     <Compile Include="Interfaces\INavigationViewModel.cs" />
+    <Compile Include="Model\Filter.cs" />
     <Compile Include="Service\LocatorService.cs" />
     <Compile Include="ViewModel\ChanceBaseViewModel.cs" />
     <Compile Include="ViewModel\CraftingBaseViewModel.cs" />

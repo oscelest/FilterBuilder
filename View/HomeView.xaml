@@ -3,13 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             DataContext="{Binding Main, Source={StaticResource Locator}}"
              mc:Ignorable="d">
     <StackPanel>
         <Label> Current filter name:</Label>
-        <TextBox Name="FilterName" Margin="5, 0, 5, 0" Background="Transparent" BorderThickness="0 0 0 1" BorderBrush="Gray" />
-        <StackPanel>
-        <Label> Current filter name:</Label>
-        <TextBox Name="FilterPath" Margin="5, 0, 5, 0" />
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" Name="FilterPath" Margin="0,0,5,0" MinWidth="40" Background="Transparent" BorderThickness="0 0 0 1" BorderBrush="Gray" Text="{Binding CurrentFilter.Path}" />
+            <TextBox Grid.Column="1" Name="FilterName" Margin="0,0,5,0" MinWidth="40" Background="Transparent" BorderThickness="0 0 0 1" BorderBrush="Gray" Text="{Binding CurrentFilter.Name}" />
+            <Button Grid.Column="2" Command="{Binding OpenFilterCommand}">Open...</Button>
+        </Grid>
+        <StackPanel Orientation="Horizontal" Margin="5,5,0,0">
+            <Button Width="80" Margin="0,0,5,0" Command="{Binding LoadFilterCommand}">Load Filter</Button>
+            <Button Width="80" Command="{Binding SaveFilterCommand}">Save Filter</Button>
         </StackPanel>
     </StackPanel>
 </UserControl>

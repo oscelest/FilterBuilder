@@ -6,10 +6,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:enum="clr-namespace:FilterBuilder.Enum"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
-        Title="Filter Builder" Width="800" Height="600" Background="DarkGray">
+        Title="{Binding Title}" Width="800" Height="600" Background="DarkGray">
     <DockPanel LastChildFill="True">
         
-        <ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding NavigationViewModels.Values}">
+        <ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding CurrentFilter.NavigationViewModels.Values}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="16" Rows="1" Height="40"/>
