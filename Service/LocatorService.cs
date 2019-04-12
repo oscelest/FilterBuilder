@@ -1,13 +1,14 @@
 using FilterBuilder.ViewModel;
+using FilterBuilder.ViewModel;
 
 namespace FilterBuilder.Service {
     public class LocatorService {
-        private static MainViewModel _main;
+        private static WindowViewModel _main;
 
         public LocatorService() {
-            _main = new MainViewModel();
+            _main = new WindowViewModel();
         }
 
-        public MainViewModel Main => _main;
+        public WindowViewModel Main => _main;
     }
 }

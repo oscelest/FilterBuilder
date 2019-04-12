@@ -2,8 +2,6 @@ using System;
 
 namespace FilterBuilder.Enum {
     public sealed class View {
-        private readonly string _value;
-
         public static readonly View HOME = new View("home");
         public static readonly View UNIQUE_WEAPON = new View("unique_weapon");
         public static readonly View UNIQUE_ARMOUR = new View("unique_armour");
@@ -20,9 +18,10 @@ namespace FilterBuilder.Enum {
         public static readonly View FLASK = new View("flask");
         public static readonly View SKILL_GEM = new View("skill_gem");
         public static readonly View LEVELING = new View("leveling");
+        private readonly string _value;
 
         private View(string value) {
-            this._value = value;
+            _value = value;
         }
 
         public override string ToString() {
@@ -32,37 +31,37 @@ namespace FilterBuilder.Enum {
         public static View Parse(string value) {
             switch (value) {
                 case "home":
-                    return View.HOME;
+                    return HOME;
                 case "unique_weapon":
-                    return View.UNIQUE_WEAPON;
+                    return UNIQUE_WEAPON;
                 case "unique_armour":
-                    return View.UNIQUE_ARMOUR;
+                    return UNIQUE_ARMOUR;
                 case "unique_accessory":
-                    return View.UNIQUE_ACCESSORY;
+                    return UNIQUE_ACCESSORY;
                 case "divination_card":
-                    return View.DIVINATION_CARD;
+                    return DIVINATION_CARD;
                 case "currency":
-                    return View.CURRENCY;
+                    return CURRENCY;
                 case "essence":
-                    return View.ESSENCE;
+                    return ESSENCE;
                 case "fossil":
-                    return View.FOSSIL;
+                    return FOSSIL;
                 case "map":
-                    return View.MAP;
+                    return MAP;
                 case "fragment":
-                    return View.FRAGMENT;
+                    return FRAGMENT;
                 case "chance_base":
-                    return View.CHANCE_BASE;
+                    return CHANCE_BASE;
                 case "crafting_base":
-                    return View.CRAFTING_BASE;
+                    return CRAFTING_BASE;
                 case "vendor_recipe":
-                    return View.VENDOR_RECIPE;
+                    return VENDOR_RECIPE;
                 case "flask":
-                    return View.FLASK;
+                    return FLASK;
                 case "skill_gem":
-                    return View.SKILL_GEM;
+                    return SKILL_GEM;
                 case "leveling":
-                    return View.LEVELING;
+                    return LEVELING;
                 default:
                     throw new NotImplementedException();
             }

@@ -2,17 +2,16 @@ using System;
 
 namespace FilterBuilder.Enum {
     public sealed class EffectShape {
-        private readonly string _name;
-
         public static readonly EffectShape CIRCLE = new EffectShape("Circle");
         public static readonly EffectShape DIAMOND = new EffectShape("Diamond");
         public static readonly EffectShape HEXAGON = new EffectShape("Hexagon");
         public static readonly EffectShape SQUARE = new EffectShape("Square");
         public static readonly EffectShape STAR = new EffectShape("Star");
         public static readonly EffectShape TRIANGLE = new EffectShape("Triangle");
+        private readonly string _name;
 
         private EffectShape(string name) {
-            this._name = name;
+            _name = name;
         }
 
         public override string ToString() {
@@ -22,17 +21,17 @@ namespace FilterBuilder.Enum {
         public static EffectShape Parse(string shape) {
             switch (shape) {
                 case "Star":
-                    return EffectShape.STAR;
+                    return STAR;
                 case "Circle":
-                    return EffectShape.CIRCLE;
+                    return CIRCLE;
                 case "Square":
-                    return EffectShape.SQUARE;
+                    return SQUARE;
                 case "Diamond":
-                    return EffectShape.DIAMOND;
+                    return DIAMOND;
                 case "Hexagon":
-                    return EffectShape.HEXAGON;
+                    return HEXAGON;
                 case "Triangle":
-                    return EffectShape.TRIANGLE;
+                    return TRIANGLE;
                 default:
                     throw new NotImplementedException();
             }

@@ -1,7 +1,4 @@
-using System.ComponentModel;
-using FilterBuilder.Enum;
-
-namespace FilterBuilder.Interfaces {
+namespace FilterBuilder.Interface {
     public interface INavigationViewModel {
         string Name { get; }
         string Image { get; }

@@ -1,5 +1,3 @@
-using FilterBuilder.Enum;
-
 namespace FilterBuilder.Helper {
     public class AlertSound {
         public int? Id { get; }

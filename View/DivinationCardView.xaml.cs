@@ -1,7 +1,7 @@
-﻿using System.Windows.Controls;
+using System.Windows.Controls;
 
 namespace FilterBuilder.View {
-    public partial class DivinationCardView {
+    public partial class DivinationCardView : UserControl {
         public DivinationCardView() {
             InitializeComponent();
         }

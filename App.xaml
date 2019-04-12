@@ -7,7 +7,8 @@
              xmlns:view="clr-namespace:FilterBuilder.View"
              xmlns:viewmodel="clr-namespace:FilterBuilder.ViewModel"
              xmlns:service="clr-namespace:FilterBuilder.Service"
-             StartupUri="View/MainView.xaml">
+             xmlns:viewModel="clr-namespace:FilterBuilder.ViewModel"
+             StartupUri="View/WindowView.xaml">
     <Application.Resources>
         <service:LocatorService x:Key="Locator" d:IsDataSource="True" />
 
@@ -71,7 +72,7 @@
             <view:UniqueWeaponView />
         </DataTemplate>
         
-        <DataTemplate DataType="{x:Type viewmodel:VendorRecipeViewModel}">
+        <DataTemplate DataType="{x:Type viewModel:VendorRecipeViewModel}">
             <view:VendorRecipeView />
         </DataTemplate>
 

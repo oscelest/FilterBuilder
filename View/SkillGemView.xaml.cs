@@ -1,7 +1,7 @@
-﻿using System.Windows.Controls;
+using System.Windows.Controls;
 
 namespace FilterBuilder.View {
-    public partial class SkillGemView {
+    public partial class SkillGemView : UserControl {
         public SkillGemView() {
             InitializeComponent();
         }

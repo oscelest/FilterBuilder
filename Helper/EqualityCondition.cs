@@ -1,5 +1,3 @@
-using System;
-using System.Diagnostics;
 using FilterBuilder.Enum;
 
 namespace FilterBuilder.Helper {

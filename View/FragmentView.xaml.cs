@@ -1,7 +1,7 @@
-﻿using System.Windows.Controls;
+using System.Windows.Controls;
 
 namespace FilterBuilder.View {
-    public partial class FragmentView {
+    public partial class FragmentView : UserControl {
         public FragmentView() {
             InitializeComponent();
         }

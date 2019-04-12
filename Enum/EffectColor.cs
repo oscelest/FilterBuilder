@@ -2,17 +2,16 @@ using System;
 
 namespace FilterBuilder.Enum {
     public sealed class EffectColor {
-        private readonly string _name;
-
         public static readonly EffectColor RED = new EffectColor("Red");
         public static readonly EffectColor GREEN = new EffectColor("Green");
         public static readonly EffectColor BLUE = new EffectColor("Blue");
         public static readonly EffectColor BROWN = new EffectColor("Brown");
         public static readonly EffectColor WHITE = new EffectColor("White");
         public static readonly EffectColor YELLOW = new EffectColor("Yellow");
+        private readonly string _name;
 
         private EffectColor(string name) {
-            this._name = name;
+            _name = name;
         }
 
         public override string ToString() {
@@ -22,17 +21,17 @@ namespace FilterBuilder.Enum {
         public static EffectColor Parse(string color) {
             switch (color) {
                 case "Red":
-                    return EffectColor.RED;
+                    return RED;
                 case "Blue":
-                    return EffectColor.BLUE;
+                    return BLUE;
                 case "Brown":
-                    return EffectColor.BROWN;
+                    return BROWN;
                 case "Green":
-                    return EffectColor.GREEN;
+                    return GREEN;
                 case "White":
-                    return EffectColor.WHITE;
+                    return WHITE;
                 case "Yellow":
-                    return EffectColor.YELLOW;
+                    return YELLOW;
                 default:
                     throw new NotImplementedException();
             }

@@ -2,8 +2,6 @@ using System;
 
 namespace FilterBuilder.Enum {
     public sealed class Tag {
-        private readonly string _name;
-
         public static readonly Tag ITEM_LEVEL = new Tag("ItemLevel");
         public static readonly Tag DROP_LEVEL = new Tag("DropLevel");
         public static readonly Tag QUALITY = new Tag("Quality");
@@ -37,9 +35,10 @@ namespace FilterBuilder.Enum {
         public static readonly Tag ALERT_SOUND = new Tag("PlayAlertSound");
         public static readonly Tag ALERT_SOUND_POSITIONAL = new Tag("PlayAlertSoundPositional");
         public static readonly Tag CUSTOM_ALERT_SOUND = new Tag("CustomAlertSound");
+        private readonly string _name;
 
         private Tag(string name) {
-            this._name = name;
+            _name = name;
         }
 
         public override string ToString() {
@@ -49,71 +48,71 @@ namespace FilterBuilder.Enum {
         public static Tag Parse(string op) {
             switch (op) {
                 case "ItemLevel":
-                    return Tag.ITEM_LEVEL;
+                    return ITEM_LEVEL;
                 case "DropLevel":
-                    return Tag.DROP_LEVEL;
+                    return DROP_LEVEL;
                 case "Quality":
-                    return Tag.QUALITY;
+                    return QUALITY;
                 case "Rarity":
-                    return Tag.RARITY;
+                    return RARITY;
                 case "Class":
-                    return Tag.CLASS;
+                    return CLASS;
                 case "BaseType":
-                    return Tag.BASE_TYPE;
+                    return BASE_TYPE;
                 case "Sockets":
-                    return Tag.SOCKETS;
+                    return SOCKETS;
                 case "LinkedSockets":
-                    return Tag.LINKED_SOCKETS;
+                    return LINKED_SOCKETS;
                 case "SocketGroup":
-                    return Tag.SOCKET_GROUP;
+                    return SOCKET_GROUP;
                 case "Height":
-                    return Tag.HEIGHT;
+                    return HEIGHT;
                 case "Width":
-                    return Tag.WIDTH;
+                    return WIDTH;
                 case "HasExplicitMods":
-                    return Tag.EXPLICIT_MODS;
+                    return EXPLICIT_MODS;
                 case "AnyEnchantment":
-                    return Tag.HAS_ENCHANTMENT;
+                    return HAS_ENCHANTMENT;
                 case "HasEnchantment":
-                    return Tag.ENCHANTMENTS;
+                    return ENCHANTMENTS;
                 case "StackSize":
-                    return Tag.STACK_SIZE;
+                    return STACK_SIZE;
                 case "GemLevel":
-                    return Tag.GEM_LEVEL;
+                    return GEM_LEVEL;
                 case "Identified":
-                    return Tag.IDENTIFIED;
+                    return IDENTIFIED;
                 case "Corrupted":
-                    return Tag.CORRUPTED;
+                    return CORRUPTED;
                 case "ElderItem":
-                    return Tag.ELDER_ITEM;
+                    return ELDER_ITEM;
                 case "ShaperItem":
-                    return Tag.SHAPER_ITEM;
+                    return SHAPER_ITEM;
                 case "FracturedItem":
-                    return Tag.FRACTURED_ITEM;
+                    return FRACTURED_ITEM;
                 case "Synthesized":
-                    return Tag.SYNTHESIZED_ITEM;
+                    return SYNTHESIZED_ITEM;
                 case "ShapedMap":
-                    return Tag.SHAPED_MAP;
+                    return SHAPED_MAP;
                 case "MapTier":
-                    return Tag.MAP_TIER;
+                    return MAP_TIER;
                 case "SetBackgroundColor":
-                    return Tag.BACKGROUND_COLOR;
+                    return BACKGROUND_COLOR;
                 case "SetBorderColor":
-                    return Tag.BORDER_COLOR;
+                    return BORDER_COLOR;
                 case "SetTextColor":
-                    return Tag.TEXT_COLOR;
+                    return TEXT_COLOR;
                 case "SetFontSize":
-                    return Tag.FONT_SIZE;
+                    return FONT_SIZE;
                 case "MinimapIcon":
-                    return Tag.MINIMAP_ICON;
+                    return MINIMAP_ICON;
                 case "BeamEffect":
-                    return Tag.BEAM_EFFECT;
+                    return BEAM_EFFECT;
                 case "AlertSound":
-                    return Tag.ALERT_SOUND;
+                    return ALERT_SOUND;
                 case "AlertSoundPositional":
-                    return Tag.ALERT_SOUND_POSITIONAL;
+                    return ALERT_SOUND_POSITIONAL;
                 case "CustomAlertSound":
-                    return Tag.CUSTOM_ALERT_SOUND;
+                    return CUSTOM_ALERT_SOUND;
                 default:
                     throw new NotImplementedException();
             }
