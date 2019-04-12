@@ -2,7 +2,7 @@ packages/
 **/packages/
 obj/
 **/obj/
-debug/
-**/debug/
+bin/
+**/bin/
 .idea/
 **/.idea/
