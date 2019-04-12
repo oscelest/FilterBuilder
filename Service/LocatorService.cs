@@ -1,5 +1,4 @@
 using FilterBuilder.ViewModel;
-using FilterBuilder.ViewModel;
 
 namespace FilterBuilder.Service {
     public class LocatorService {

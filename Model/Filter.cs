@@ -12,7 +12,7 @@ namespace FilterBuilder.Model {
             {Enum.View.HOME, WindowViewModel.ViewModels[Enum.View.HOME] as INavigationViewModel},
             {Enum.View.CURRENCY, WindowViewModel.ViewModels[Enum.View.CURRENCY] as INavigationViewModel},
             {Enum.View.UNIQUE_WEAPON, WindowViewModel.ViewModels[Enum.View.UNIQUE_WEAPON] as INavigationViewModel},
-            {Enum.View.UNIQUE_ARMOUR, WindowViewModel.ViewModels[Enum.View.UNIQUE_WEAPON] as INavigationViewModel},
+            {Enum.View.UNIQUE_ARMOUR, WindowViewModel.ViewModels[Enum.View.UNIQUE_ARMOUR] as INavigationViewModel},
             {Enum.View.UNIQUE_ACCESSORY, WindowViewModel.ViewModels[Enum.View.UNIQUE_ACCESSORY] as INavigationViewModel},
             {Enum.View.DIVINATION_CARD, WindowViewModel.ViewModels[Enum.View.DIVINATION_CARD] as INavigationViewModel},
             {Enum.View.MAP, WindowViewModel.ViewModels[Enum.View.MAP] as INavigationViewModel},

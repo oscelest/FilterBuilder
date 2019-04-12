@@ -9,14 +9,14 @@
         <Label> Current filter name:</Label>
         <Grid Margin="5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="6*" />
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="6*" MaxWidth="400" />
+                <ColumnDefinition Width="2*" MaxWidth="100" />
+                <ColumnDefinition Width="1*" MaxWidth="20" />
             </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Column="0" Name="FilterPath" Margin="0,0,5,0" MinWidth="40" Background="Transparent" BorderThickness="0 0 0 1" BorderBrush="Gray" Text="{Binding CurrentFilter.Path}" />
-            <TextBox Grid.Column="1" Name="FilterName" Margin="0,0,5,0" MinWidth="40" Background="Transparent" BorderThickness="0 0 0 1" BorderBrush="Gray" Text="{Binding CurrentFilter.Name}" />
-            <Button Grid.Column="2" Command="{Binding OpenFilterCommand}">Open...</Button>
+            <TextBox Grid.Column="0" Margin="0,0,5,0" MinWidth="40" Background="Transparent" BorderThickness="0 0 0 1" BorderBrush="Gray" Text="{Binding CurrentFilter.Path}" />
+            <TextBox Grid.Column="1" Margin="0,0,5,0" MinWidth="40" Background="Transparent" BorderThickness="0 0 0 1" BorderBrush="Gray" Text="{Binding CurrentFilter.Name}" />
+            <Button Grid.Column="2" Command="{Binding OpenFilterCommand}">...</Button>
         </Grid>
         <StackPanel Orientation="Horizontal" Margin="5,5,0,0">
             <Button Width="80" Margin="0,0,5,0" Command="{Binding LoadFilterCommand}">Load Filter</Button>

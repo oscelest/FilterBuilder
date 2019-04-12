@@ -11,7 +11,6 @@ using FilterBuilder.Helper;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using FilterBuilder.Model;
-using FilterBuilder.ViewModel;
 using Newtonsoft.Json;
 
 namespace FilterBuilder.ViewModel {
@@ -26,28 +25,28 @@ namespace FilterBuilder.ViewModel {
         public ICommand LoadFilterCommand { get; }
 
         public static Dictionary<FilterBuilder.Enum.View, ViewModelBase> ViewModels { get; } = new Dictionary<FilterBuilder.Enum.View, ViewModelBase>() {
-            {FilterBuilder.Enum.View.HOME, new HomeViewModel()},
-            {FilterBuilder.Enum.View.CURRENCY, new CurrencyViewModel()},
-            {FilterBuilder.Enum.View.UNIQUE_WEAPON, new UniqueWeaponViewModel()},
-            {FilterBuilder.Enum.View.UNIQUE_ARMOUR, new UniqueArmourViewModel()},
-            {FilterBuilder.Enum.View.UNIQUE_ACCESSORY, new UniqueAccessoryViewModel()},
-            {FilterBuilder.Enum.View.DIVINATION_CARD, new DivinationCardViewModel()},
-            {FilterBuilder.Enum.View.MAP, new MapViewModel()},
-            {FilterBuilder.Enum.View.FRAGMENT, new FragmentViewModel()},
-            {FilterBuilder.Enum.View.FOSSIL, new FossilViewModel()},
-            {FilterBuilder.Enum.View.ESSENCE, new EssenceViewModel()},
-            {FilterBuilder.Enum.View.VENDOR_RECIPE, new VendorRecipeViewModel()},
-            {FilterBuilder.Enum.View.SKILL_GEM, new SkillGemViewModel()},
-            {FilterBuilder.Enum.View.FLASK, new FlaskViewModel()},
-            {FilterBuilder.Enum.View.CHANCE_BASE, new ChanceBaseViewModel()},
-            {FilterBuilder.Enum.View.CRAFTING_BASE, new CraftingBaseViewModel()},
-            {FilterBuilder.Enum.View.LEVELING, new LevelingViewModel()},
+            {Enum.View.HOME, new HomeViewModel()},
+            {Enum.View.CURRENCY, new CurrencyViewModel()},
+            {Enum.View.UNIQUE_WEAPON, new UniqueWeaponViewModel()},
+            {Enum.View.UNIQUE_ARMOUR, new UniqueArmourViewModel()},
+            {Enum.View.UNIQUE_ACCESSORY, new UniqueAccessoryViewModel()},
+            {Enum.View.DIVINATION_CARD, new DivinationCardViewModel()},
+            {Enum.View.MAP, new MapViewModel()},
+            {Enum.View.FRAGMENT, new FragmentViewModel()},
+            {Enum.View.FOSSIL, new FossilViewModel()},
+            {Enum.View.ESSENCE, new EssenceViewModel()},
+            {Enum.View.VENDOR_RECIPE, new VendorRecipeViewModel()},
+            {Enum.View.SKILL_GEM, new SkillGemViewModel()},
+            {Enum.View.FLASK, new FlaskViewModel()},
+            {Enum.View.CHANCE_BASE, new ChanceBaseViewModel()},
+            {Enum.View.CRAFTING_BASE, new CraftingBaseViewModel()},
+            {Enum.View.LEVELING, new LevelingViewModel()},
         };
 
         public WindowViewModel() {
             Title = "Item Filter Builder";
             CurrentFilter = new Filter();
-            ExecuteChangeViewCommand(FilterBuilder.Enum.View.HOME);
+            ExecuteChangeViewCommand(Enum.View.HOME);
             ExecuteCheckUpdateCommand();
             ChangeViewCommand = new RelayCommand<FilterBuilder.Enum.View>(ExecuteChangeViewCommand);
             OpenFilterCommand = new RelayCommand(ExecuteOpenFilterCommand);
@@ -99,12 +98,12 @@ namespace FilterBuilder.ViewModel {
             try {
                 var release = JsonConvert.DeserializeObject<List<Release>>(await client.GetStringAsync("https://api.github.com/repos/oscelest/FilterBuilder/releases"));
                 if (release.Count == 0) return;
-                var current_version = Assembly.GetExecutingAssembly().GetName().Version.ToString().Split('.').Select(x => int.Parse(x)).ToArray();
-                var release_version = release[0].TagName.Split('.').Select(x => int.Parse(x)).ToArray();
-                Debug.WriteLine(current_version);
-                Debug.WriteLine(release_version);
-                if (current_version[0] >= release_version[0] && current_version[1] >= release_version[1] && current_version[2] >= release_version[2] &&
-                    current_version[3] >= release_version[3]) return;
+                var currentVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString().Split('.').Select(int.Parse).ToArray();
+                var releaseVersion = release[0].TagName.Split('.').Select(int.Parse).ToArray();
+                Debug.WriteLine(currentVersion);
+                Debug.WriteLine(releaseVersion);
+                if (currentVersion[0] >= releaseVersion[0] && currentVersion[1] >= releaseVersion[1] && currentVersion[2] >= releaseVersion[2] && currentVersion[3] >= releaseVersion[3]) return;
+                
             }
             catch (Exception e) {
                 Debug.WriteLine(e);
