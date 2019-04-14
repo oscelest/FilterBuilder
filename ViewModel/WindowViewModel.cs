@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Windows;
@@ -12,6 +13,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using FilterBuilder.Model;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace FilterBuilder.ViewModel {
     public class WindowViewModel : ViewModelBase {
@@ -93,17 +95,19 @@ namespace FilterBuilder.ViewModel {
         }
 
         private async void ExecuteCheckUpdateCommand() {
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Add("User-Agent", "C# System.Net.HTTP");
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Add("User-Agent", "C# System.Net.HTTP");
             try {
-                var release = JsonConvert.DeserializeObject<List<Release>>(await client.GetStringAsync("https://api.github.com/repos/oscelest/FilterBuilder/releases"));
-                if (release.Count == 0) return;
                 var currentVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString().Split('.').Select(int.Parse).ToArray();
-                var releaseVersion = release[0].TagName.Split('.').Select(int.Parse).ToArray();
-                Debug.WriteLine(currentVersion);
-                Debug.WriteLine(releaseVersion);
-                if (currentVersion[0] >= releaseVersion[0] && currentVersion[1] >= releaseVersion[1] && currentVersion[2] >= releaseVersion[2] && currentVersion[3] >= releaseVersion[3]) return;
-                
+                var release = JsonConvert.DeserializeObject<List<Release>>(await httpClient.GetStringAsync("https://api.github.com/repos/oscelest/FilterBuilder/releases")).SingleOrDefault(x => {
+                    if (x.Prerelease) return false;
+                    var releaseVersion = x.TagName.Split('.').Select(int.Parse).ToArray();
+                    return !(currentVersion[0] >= releaseVersion[0] && currentVersion[1] >= releaseVersion[1] && currentVersion[2] >= releaseVersion[2] && currentVersion[3] >= releaseVersion[3]);
+                });
+                if (release == null) return;
+                Debug.WriteLine($"Should update from {Assembly.GetExecutingAssembly().GetName().Version.ToString()} to {release.TagName}");
+                new WebClient().DownloadFile(release.Assets[0].BrowserDownloadUrl, Path.Combine(Path.GetTempPath(), "release.zip"));
+                Process.Start(Path.Combine(Directory.GetCurrentDirectory(), "Updater", "FilterBuilderUpdater.exe"), $"{Process.GetCurrentProcess().Id} {release.Assets[0].BrowserDownloadUrl}");
             }
             catch (Exception e) {
                 Debug.WriteLine(e);

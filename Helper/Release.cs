@@ -1,65 +1,63 @@
 using System;
 using System.Collections.Generic;
-using System.Net;
-using System.Resources;
-using System.Security.Policy;
+using Newtonsoft.Json;
 
 namespace FilterBuilder.Helper {
     public class Release {
-        public string Url { get; set; }
-        public string AssetsUrl { get; set; }
-        public string UploadUrl { get; set; }
-        public string HtmlUrl { get; set; }
-        public int Id { get; set; }
-        public string NodeId { get; set; }
-        public string TagName { get; set; }
-        public string TargetCommitish { get; set; }
-        public string Name { get; set; }
-        public bool Draft { get; set; }
-        public ReleaseAuthor Author { get; set; }
-        public bool Prerelease { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime PublishedAt { get; set; }
-        public List<ReleaseAsset> Assets { get; set; }
-        public string TarballUrl { get; set; }
-        public string ZipballUrl { get; set; }
-        public string Body { get; set; }
+        [JsonProperty("url")] public string Url { get; set; }
+        [JsonProperty("assets_url")] public string AssetsUrl { get; set; }
+        [JsonProperty("upload_url")] public string UploadUrl { get; set; }
+        [JsonProperty("html_url")] public string HtmlUrl { get; set; }
+        [JsonProperty("id")] public int Id { get; set; }
+        [JsonProperty("node_id")] public string NodeId { get; set; }
+        [JsonProperty("tag_name")] public string TagName { get; set; }
+        [JsonProperty("target_commitish")] public string TargetCommitish { get; set; }
+        [JsonProperty("name")] public string Name { get; set; }
+        [JsonProperty("draft")] public bool Draft { get; set; }
+        [JsonProperty("author")] public ReleaseAuthor Author { get; set; }
+        [JsonProperty("prerelease")] public bool Prerelease { get; set; }
+        [JsonProperty("created_at")] public DateTime CreatedAt { get; set; }
+        [JsonProperty("published_at")] public DateTime PublishedAt { get; set; }
+        [JsonProperty("assets")] public List<ReleaseAsset> Assets { get; set; }
+        [JsonProperty("tarball_url")] public string TarballUrl { get; set; }
+        [JsonProperty("zipball_url")] public string ZipballUrl { get; set; }
+        [JsonProperty("body")] public string Body { get; set; }
 
         public class ReleaseAuthor {
-            public string Login { get; set; }
-            public int Id { get; set; }
-            public string NodeId { get; set; }
-            public string AvatarUrl { get; set; }
-            public string GravatarId { get; set; }
-            public string Url { get; set; }
-            public string HtmlUrl { get; set; }
-            public string FollowersUrl { get; set; }
-            public string FollowingUrl { get; set; }
-            public string GistsUrl { get; set; }
-            public string StarredUrl { get; set; }
-            public string SubscriptionsUrl { get; set; }
-            public string OrganizationsUrl { get; set; }
-            public string ReposUrl { get; set; }
-            public string EventsUrl { get; set; }
-            public string ReceivedEventsUrl { get; set; }
-            public string Type { get; set; }
-            public bool SiteAdmin { get; set; }
+            [JsonProperty("login")] public string Login { get; set; }
+            [JsonProperty("id")] public int Id { get; set; }
+            [JsonProperty("node_id")] public string NodeId { get; set; }
+            [JsonProperty("avatar_url")] public string AvatarUrl { get; set; }
+            [JsonProperty("gravatar_id")] public string GravatarId { get; set; }
+            [JsonProperty("url")] public string Url { get; set; }
+            [JsonProperty("html_url")] public string HtmlUrl { get; set; }
+            [JsonProperty("followers_url")] public string FollowersUrl { get; set; }
+            [JsonProperty("following_url")] public string FollowingUrl { get; set; }
+            [JsonProperty("gists_url")] public string GistsUrl { get; set; }
+            [JsonProperty("starred_rul")] public string StarredUrl { get; set; }
+            [JsonProperty("subscriptions_url")] public string SubscriptionsUrl { get; set; }
+            [JsonProperty("organizations_url")] public string OrganizationsUrl { get; set; }
+            [JsonProperty("repos_url")] public string ReposUrl { get; set; }
+            [JsonProperty("events_url")] public string EventsUrl { get; set; }
+            [JsonProperty("received_events_url")] public string ReceivedEventsUrl { get; set; }
+            [JsonProperty("type")] public string Type { get; set; }
+            [JsonProperty("site_admin")] public bool SiteAdmin { get; set; }
         }
 
         public class ReleaseAsset {
-            public string Url { get; set; }
-            public int Id { get; set; }
-            public string NodeId { get; set; }
-            public string Name { get; set; }
-            public string Label { get; set; }
-            public ReleaseAuthor Uploader { get; set; }
-            public string ContentType { get; set; }
-            public string State { get; set; }
-            public int Size { get; set; }
-            public int DownloadCount { get; set; }
-            public DateTime CreatedAt { get; set; }
-            public DateTime UpdatedAt { get; set; }
-            public string BrowserDownloadUrl { get; set; }
+            [JsonProperty("url")] public string Url { get; set; }
+            [JsonProperty("id")] public int Id { get; set; }
+            [JsonProperty("node_id")] public string NodeId { get; set; }
+            [JsonProperty("name")] public string Name { get; set; }
+            [JsonProperty("label")] public string Label { get; set; }
+            [JsonProperty("uploader")] public ReleaseAuthor Uploader { get; set; }
+            [JsonProperty("content_type")] public string ContentType { get; set; }
+            [JsonProperty("state")] public string State { get; set; }
+            [JsonProperty("size")] public int Size { get; set; }
+            [JsonProperty("download_count")] public int DownloadCount { get; set; }
+            [JsonProperty("created_at")] public DateTime CreatedAt { get; set; }
+            [JsonProperty("updated_at")] public DateTime UpdatedAt { get; set; }
+            [JsonProperty("browser_download_url")] public string BrowserDownloadUrl { get; set; }
         }
     }
 }
