@@ -1,8 +1,8 @@
 using System.Windows.Controls;
 
 namespace FilterBuilder.View {
-    public partial class CraftingBaseView : UserControl {
-        public CraftingBaseView() {
+    public partial class EditorView {
+        public EditorView() {
             InitializeComponent();
         }
     }

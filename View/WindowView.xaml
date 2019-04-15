@@ -4,26 +4,34 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:enum="clr-namespace:FilterBuilder.Enum"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
-        Title="{Binding Title}" Width="800" Height="600" Left="0" Top="0" Background="DarkGray">
+        Title="{Binding Title}" Width="800" Height="600" Left="0" Top="0" Background="#2B2B2B">
     <DockPanel LastChildFill="True">
-
-        <ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding CurrentFilter.NavigationViewModels.Values}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <UniformGrid Columns="16" Rows="1" Height="40" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding Key}">
-                        <Image Source="{Binding Image}" />
-                    </Button>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        <Border DockPanel.Dock="Top" BorderThickness="0 0 0 1" BorderBrush="#65686A">
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource HomeButton}" Command="{Binding ChangeViewCommand}" CommandParameter="{x:Static enum:View.HOME}">
+                    <Image Source="../Resources/Images/Home.png" />
+                </Button>
+                <ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding CurrentFilter.Categories}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="16" Rows="1" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource NavigationButton}" 
+                                    Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{x:Static enum:View.EDITOR}">
+                                <Image Source="{Binding Category.Image}" />
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Border>
 
         <ContentControl Content="{Binding CurrentViewModel}" />
-
     </DockPanel>
+
 </Window>

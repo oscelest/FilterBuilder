@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>FilterBuilder</RootNamespace>
     <AssemblyName>FilterBuilder</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -94,6 +94,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Enum\Category.cs" />
     <Compile Include="Enum\View.cs" />
     <Compile Include="Enum\Tag.cs" />
     <Compile Include="Enum\EqualityOperator.cs" />
@@ -110,68 +111,15 @@
     <Compile Include="Helper\ValueCondition.cs" />
     <Compile Include="Interface\INavigationViewModel.cs" />
     <Compile Include="Model\Filter.cs" />
+    <Compile Include="Model\FilterCategory.cs" />
     <Compile Include="Service\LocatorService.cs" />
-    <Compile Include="ViewModel\ChanceBaseViewModel.cs" />
-    <Compile Include="ViewModel\CraftingBaseViewModel.cs" />
-    <Compile Include="ViewModel\CurrencyViewModel.cs" />
-    <Compile Include="ViewModel\DivinationCardViewModel.cs" />
-    <Compile Include="ViewModel\EssenceViewModel.cs" />
-    <Compile Include="ViewModel\FlaskViewModel.cs" />
-    <Compile Include="ViewModel\FossilViewModel.cs" />
-    <Compile Include="ViewModel\FragmentViewModel.cs" />
+    <Compile Include="ViewModel\EditorViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
-    <Compile Include="ViewModel\LevelingViewModel.cs" />
-    <Compile Include="ViewModel\MapViewModel.cs" />
-    <Compile Include="ViewModel\SkillGemViewModel.cs" />
-    <Compile Include="ViewModel\UniqueAccessoryViewModel.cs" />
-    <Compile Include="ViewModel\UniqueArmourViewModel.cs" />
-    <Compile Include="ViewModel\UniqueWeaponViewModel.cs" />
-    <Compile Include="ViewModel\VendorRecipeViewModel.cs" />
     <Compile Include="ViewModel\WindowViewModel.cs" />
-    <Compile Include="View\ChanceBaseView.xaml.cs">
-      <DependentUpon>ChanceBaseView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\CraftingBaseView.xaml.cs">
-      <DependentUpon>CraftingBaseView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\CurrencyView.xaml.cs">
-      <DependentUpon>CurrencyView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\DivinationCardView.xaml.cs">
-      <DependentUpon>DivinationCardView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\EssenceView.xaml.cs">
-      <DependentUpon>EssenceView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\FlaskView.xaml.cs">
-      <DependentUpon>FlaskView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\FossilView.xaml.cs">
-      <DependentUpon>FossilView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\FragmentView.xaml.cs">
-      <DependentUpon>FragmentView.xaml</DependentUpon>
+    <Compile Include="View\EditorView.xaml.cs">
+      <DependentUpon>EditorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HomeView.xaml.cs" />
-    <Compile Include="View\LevelingView.xaml.cs">
-      <DependentUpon>LevelingView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\MapView.xaml.cs">
-      <DependentUpon>MapView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\SkillGemView.xaml.cs">
-      <DependentUpon>SkillGemView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UniqueAccessoryView.xaml.cs">
-      <DependentUpon>UniqueAccessoryView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UniqueArmourView.xaml.cs">
-      <DependentUpon>UniqueArmourView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UniqueWeaponView.xaml.cs" />
-    <Compile Include="View\VendorRecipeView.xaml.cs">
-      <DependentUpon>VendorRecipeView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\WindowView.xaml.cs">
       <DependentUpon>WindowView.xaml</DependentUpon>
     </Compile>
@@ -194,25 +142,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="View\ChanceBaseView.xaml" />
-    <Page Include="View\CraftingBaseView.xaml" />
-    <Page Include="View\CurrencyView.xaml" />
-    <Page Include="View\DivinationCardView.xaml" />
-    <Page Include="View\EssenceView.xaml" />
-    <Page Include="View\FlaskView.xaml" />
-    <Page Include="View\FossilView.xaml" />
-    <Page Include="View\FragmentView.xaml" />
-    <Page Include="View\LevelingView.xaml" />
-    <Page Include="View\VendorRecipeView.xaml" />
+    <Page Include="View\EditorView.xaml" />
     <Page Include="View\WindowView.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="View\HomeView.xaml" />
-    <Page Include="View\MapView.xaml" />
-    <Page Include="View\SkillGemView.xaml" />
-    <Page Include="View\UniqueAccessoryView.xaml" />
-    <Page Include="View\UniqueArmourView.xaml" />
-    <Page Include="View\UniqueWeaponView.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Currency.png" />
@@ -241,6 +172,8 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="packages.config" />
+    <Page Include="View\HomeView.xaml" />
+    <Resource Include="Resources\Images\General.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

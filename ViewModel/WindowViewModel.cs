@@ -13,7 +13,6 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using FilterBuilder.Model;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace FilterBuilder.ViewModel {
     public class WindowViewModel : ViewModelBase {
@@ -28,21 +27,7 @@ namespace FilterBuilder.ViewModel {
 
         public static Dictionary<FilterBuilder.Enum.View, ViewModelBase> ViewModels { get; } = new Dictionary<FilterBuilder.Enum.View, ViewModelBase>() {
             {Enum.View.HOME, new HomeViewModel()},
-            {Enum.View.CURRENCY, new CurrencyViewModel()},
-            {Enum.View.UNIQUE_WEAPON, new UniqueWeaponViewModel()},
-            {Enum.View.UNIQUE_ARMOUR, new UniqueArmourViewModel()},
-            {Enum.View.UNIQUE_ACCESSORY, new UniqueAccessoryViewModel()},
-            {Enum.View.DIVINATION_CARD, new DivinationCardViewModel()},
-            {Enum.View.MAP, new MapViewModel()},
-            {Enum.View.FRAGMENT, new FragmentViewModel()},
-            {Enum.View.FOSSIL, new FossilViewModel()},
-            {Enum.View.ESSENCE, new EssenceViewModel()},
-            {Enum.View.VENDOR_RECIPE, new VendorRecipeViewModel()},
-            {Enum.View.SKILL_GEM, new SkillGemViewModel()},
-            {Enum.View.FLASK, new FlaskViewModel()},
-            {Enum.View.CHANCE_BASE, new ChanceBaseViewModel()},
-            {Enum.View.CRAFTING_BASE, new CraftingBaseViewModel()},
-            {Enum.View.LEVELING, new LevelingViewModel()},
+            {Enum.View.EDITOR, new EditorViewModel()},
         };
 
         public WindowViewModel() {
@@ -64,7 +49,7 @@ namespace FilterBuilder.ViewModel {
         private void ExecuteOpenFilterCommand() {
             var fileDialog = new Microsoft.Win32.OpenFileDialog {
                 Filter = "filter files (*.filter)|*.filter",
-                InitialDirectory = Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), "Documents", "My Games", "Path of Exile")
+                InitialDirectory = CurrentFilter.Path
             };
 
             if (fileDialog.ShowDialog() != true) return;
