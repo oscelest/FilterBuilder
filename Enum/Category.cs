@@ -1,4 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
 
 namespace FilterBuilder.Enum {
     public sealed class Category {
@@ -18,6 +22,13 @@ namespace FilterBuilder.Enum {
         public static Category FLASK { get; } = new Category("flask", "pack://application:,,,/FilterBuilder;component/Resources/Images/Flask.png");
         public static Category SKILL_GEM { get; } = new Category("skill_gem", "pack://application:,,,/FilterBuilder;component/Resources/Images/SkillGem.png");
         public static Category LEVELING { get; } = new Category("leveling", "pack://application:,,,/FilterBuilder;component/Resources/Images/Leveling.png");
+
+        public static List<string> Categories { get; } = typeof(Category).GetFields(BindingFlags.Public | BindingFlags.Static).Where(f => {
+                Debug.WriteLine(f.FieldType);
+                return f.FieldType == typeof(Category);
+            })
+            .Select(x => (string) x.GetValue(null)).ToList();
+
         public string Value { get; }
         public string Image { get; }
 

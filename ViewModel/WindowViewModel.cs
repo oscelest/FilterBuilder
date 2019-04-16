@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
+using FilterBuilder.Enum;
 using FilterBuilder.Helper;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -39,6 +40,25 @@ namespace FilterBuilder.ViewModel {
             OpenFilterCommand = new RelayCommand(ExecuteOpenFilterCommand);
             SaveFilterCommand = new RelayCommand(ExecuteSaveFilterCommand);
             LoadFilterCommand = new RelayCommand(ExecuteLoadFilterCommand);
+            var Members = typeof(Category).GetMembers();
+            var Props = typeof(Category).GetProperties();
+            var Fields = typeof(Category).GetFields();
+            var Methods = typeof(Category).GetMethods();
+            var Constructors = typeof(Category).GetConstructors();
+            Debug.WriteLine("HAPPENING");
+            Debug.WriteLine(Members + " | " + Members.Length);
+            Debug.WriteLine(Props + " | " + Props.Length);
+            Debug.WriteLine(Fields + " | " + Fields.Length);
+            Debug.WriteLine(Methods + " | " + Methods.Length);
+            Debug.WriteLine(Constructors + " | " + Constructors.Length);
+//            foreach (var a in A) {
+//                Debug.WriteLine(a);
+//            }
+            //            var A = typeof(Category).GetFields(BindingFlags.Public | BindingFlags.Static).Where(f => {
+//                    Debug.WriteLine(f.FieldType);
+//                    return f.FieldType == typeof(Category);
+//                })
+//                .Select(x => (string) x.GetValue(null)).ToList();
         }
 
         private void ExecuteNewFilterCommand() {

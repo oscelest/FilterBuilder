@@ -16,7 +16,7 @@
                 <ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding CurrentFilter.Categories}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <UniformGrid Columns="16" Rows="1" />
+                            <UniformGrid Rows="1" />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
