@@ -7,7 +7,7 @@
              xmlns:enum="clr-namespace:FilterBuilder.Enum"
              DataContext="{Binding Home, Source={StaticResource Locator}}">
     <StackPanel>
-        <Label Content="{Binding Window, Path=Window.ChangeLanguageCommand,Converter={StaticResource StringToTranslationConverter}, ConverterParameter='WELCOME', Source={StaticResource Locator}}"/>
+        <Label Content="{Binding Window, Path=Window.ChangeLanguageCommand,Converter={StaticResource StringToTranslationConverter}, ConverterParameter='WELCOME', Source={StaticResource Locator}}" />
         <Button Content="Create Parking" Command="{Binding Window.ChangeViewCommand, Source={StaticResource Locator}}" CommandParameter="{x:Static enum:View.REGISTER}" />
         <Button Content="Finish Parking" Command="{Binding Window.ChangeViewCommand, Source={StaticResource Locator}}" CommandParameter="{x:Static enum:View.COMPLETE}" />
     </StackPanel>

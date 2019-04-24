@@ -1,17 +1,12 @@
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using FilterBuilder.Enum;
 using Newtonsoft.Json;
 
 namespace FilterBuilder.Model {
     public class Translator {
-        public Enum.Language Id { get; }
-        public string Icon { get; }
-        public string Title { get; }
-        public Dictionary<string, string> Translations { get; }
-
-        public Translator(Enum.Language id, string title) {
+        public Translator(Language id, string title) {
             Id = id;
             Title = title;
             Icon = $"pack://application:,,,/FilterBuilder;component/Resources/Images/{id}.png";
@@ -20,6 +15,11 @@ namespace FilterBuilder.Model {
             if (stream == null) throw new FileNotFoundException($"FilterBuilder.Resources.Translations.{id}.json");
             Translations = JsonConvert.DeserializeObject<Dictionary<string, string>>(new StreamReader(stream).ReadToEnd());
         }
+
+        public Language Id { get; }
+        public string Icon { get; }
+        public string Title { get; }
+        public Dictionary<string, string> Translations { get; }
 
         public string Translate(string token) {
             return Translations[token];

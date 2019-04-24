@@ -6,8 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
-using System.Windows.Data;
 using System.Windows.Input;
+using FilterBuilder.Enum;
 using FilterBuilder.Helper;
 using FilterBuilder.Model;
 using GalaSoft.MvvmLight;
@@ -16,6 +16,14 @@ using Newtonsoft.Json;
 
 namespace FilterBuilder.ViewModel {
     public class WindowViewModel : ViewModelBase {
+        public WindowViewModel() {
+            Title = "Item Filter Builder";
+            ChangeViewCommand = new RelayCommand<Enum.View>(ExecuteChangeViewCommand);
+            ChangeLanguageCommand = new RelayCommand<Language>(ExecuteChangeLanguageCommand);
+            ExecuteChangeViewCommand(Enum.View.HOME);
+            ExecuteCheckUpdateCommand();
+        }
+
         public string Title { get; set; }
         public ViewModelBase CurrentViewModel { get; set; }
         public ICommand ChangeViewCommand { get; }
@@ -25,23 +33,15 @@ namespace FilterBuilder.ViewModel {
             {Enum.View.HOME, new HomeViewModel()},
             {Enum.View.REGISTER, new RegisterViewModel()},
             {Enum.View.COMPLETE, new CompleteViewModel()},
-            {Enum.View.PAYMENT, new PaymentViewModel()},
+            {Enum.View.PAYMENT, new PaymentViewModel()}
         };
-
-        public WindowViewModel() {
-            Title = "Item Filter Builder";
-            ChangeViewCommand = new RelayCommand<FilterBuilder.Enum.View>(ExecuteChangeViewCommand);
-            ChangeLanguageCommand = new RelayCommand<FilterBuilder.Enum.Language>(ExecuteChangeLanguageCommand);
-            ExecuteChangeViewCommand(Enum.View.HOME);
-            ExecuteCheckUpdateCommand();
-        }
 
         private void ExecuteChangeViewCommand(Enum.View p) {
             CurrentViewModel = ViewModels[p];
             RaisePropertyChanged("CurrentViewModel");
         }
 
-        private void ExecuteChangeLanguageCommand(Enum.Language p) {
+        private void ExecuteChangeLanguageCommand(Language p) {
             State.Instance.CurrentLanguage = State.Instance.AvailableLanguages.SingleOrDefault(v => v.Id == p);
             RaisePropertyChanged("ChangeLanguageCommand");
         }

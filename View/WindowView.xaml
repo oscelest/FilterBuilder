@@ -9,8 +9,8 @@
         DataContext="{Binding Window, Source={StaticResource Locator}}"
         Title="{Binding Title}" Width="800" Height="600" Left="0" Top="0">
     <DockPanel LastChildFill="True">
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="60" Margin="0,10,10,10" >
-            <Label Content="{Binding Path=ChangeLanguageCommand,Converter={StaticResource StringToTranslationConverter}, ConverterParameter='LANGUAGE', UpdateSourceTrigger=PropertyChanged}"/>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="60" Margin="0,10,10,10">
+            <Label Content="{Binding Path=ChangeLanguageCommand,Converter={StaticResource StringToTranslationConverter}, ConverterParameter='LANGUAGE', UpdateSourceTrigger=PropertyChanged}" />
             <ItemsControl ItemsSource="{Binding AvailableLanguages, Source={x:Static model:State.Instance}}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>

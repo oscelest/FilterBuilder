@@ -5,7 +5,7 @@ using System.Windows.Data;
 using FilterBuilder.Model;
 
 namespace FilterBuilder.Converters {
-    public class StringToTranslationConverter: IValueConverter {
+    public class StringToTranslationConverter : IValueConverter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             Debug.WriteLine(value);
             Debug.WriteLine(parameter);

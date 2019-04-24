@@ -3,12 +3,13 @@ using System;
 namespace FilterBuilder.Enum {
     public sealed class Language {
         private readonly string _value;
-        public static Language DANISH { get; } = new Language("da-DK");
-        public static Language ENGLISH { get; } = new Language("en-GB");
 
         private Language(string value) {
             _value = value;
         }
+
+        public static Language DANISH { get; } = new Language("da-DK");
+        public static Language ENGLISH { get; } = new Language("en-GB");
 
         public override string ToString() {
             return _value;
