@@ -2,13 +2,16 @@ using System;
 
 namespace FilterBuilder.Enum {
     public sealed class View {
-        public static View HOME { get; } = new View("home");
-        public static View EDITOR { get; } = new View("editor");
         private readonly string _value;
 
         private View(string value) {
             _value = value;
         }
+
+        public static View HOME { get; } = new View("home");
+        public static View REGISTER { get; } = new View("register");
+        public static View COMPLETE { get; } = new View("complete");
+        public static View PAYMENT { get; } = new View("payment");
 
         public override string ToString() {
             return _value;
@@ -18,8 +21,12 @@ namespace FilterBuilder.Enum {
             switch (value) {
                 case "home":
                     return HOME;
-                case "editor":
-                    return EDITOR;
+                case "register":
+                    return REGISTER;
+                case "complete":
+                    return COMPLETE;
+                case "payment":
+                    return PAYMENT;
                 default:
                     throw new NotImplementedException();
             }

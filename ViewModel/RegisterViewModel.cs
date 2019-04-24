@@ -1,6 +1,6 @@
 using GalaSoft.MvvmLight;
 
 namespace FilterBuilder.ViewModel {
-    public class HomeViewModel : ViewModelBase {
+    public class RegisterViewModel : ViewModelBase {
     }
 }

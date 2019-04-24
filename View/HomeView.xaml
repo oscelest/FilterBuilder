@@ -1,26 +1,14 @@
 <UserControl x:Class="FilterBuilder.View.HomeView"
+             mc:Ignorable="d"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             DataContext="{Binding Main, Source={StaticResource Locator}}"
-             mc:Ignorable="d">
+             xmlns:enum="clr-namespace:FilterBuilder.Enum"
+             DataContext="{Binding Home, Source={StaticResource Locator}}">
     <StackPanel>
-        <Label> Current filter name:</Label>
-        <Grid Margin="5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="6*" MaxWidth="400" />
-                <ColumnDefinition Width="2*" MaxWidth="100" />
-                <ColumnDefinition Width="1*" MaxWidth="20" />
-            </Grid.ColumnDefinitions>
-
-            <TextBox Grid.Column="0" Margin="0,0,5,0" MinWidth="40" Background="Transparent" BorderThickness="0 0 0 1" BorderBrush="Gray" Text="{Binding CurrentFilter.Path}" />
-            <TextBox Grid.Column="1" Margin="0,0,5,0" MinWidth="40" Background="Transparent" BorderThickness="0 0 0 1" BorderBrush="Gray" Text="{Binding CurrentFilter.Name}" />
-            <Button Grid.Column="2" Command="{Binding OpenFilterCommand}">...</Button>
-        </Grid>
-        <StackPanel Orientation="Horizontal" Margin="5,5,0,0">
-            <Button Width="80" Margin="0,0,5,0" Command="{Binding LoadFilterCommand}">Load Filter</Button>
-            <Button Width="80" Command="{Binding SaveFilterCommand}">Save Filter</Button>
-        </StackPanel>
+        <Label Content="{Binding Window, Path=Window.ChangeLanguageCommand,Converter={StaticResource StringToTranslationConverter}, ConverterParameter='WELCOME', Source={StaticResource Locator}}"/>
+        <Button Content="Create Parking" Command="{Binding Window.ChangeViewCommand, Source={StaticResource Locator}}" CommandParameter="{x:Static enum:View.REGISTER}" />
+        <Button Content="Finish Parking" Command="{Binding Window.ChangeViewCommand, Source={StaticResource Locator}}" CommandParameter="{x:Static enum:View.COMPLETE}" />
     </StackPanel>
 </UserControl>

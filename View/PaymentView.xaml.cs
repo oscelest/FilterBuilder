@@ -1,6 +1,6 @@
 namespace FilterBuilder.View {
-    public partial class HomeView {
-        public HomeView() {
+    public partial class PaymentView {
+        public PaymentView() {
             InitializeComponent();
         }
     }

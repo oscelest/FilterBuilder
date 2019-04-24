@@ -60,6 +60,7 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
       <HintPath>packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
@@ -67,14 +68,6 @@
     </Reference>
     <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml" />
@@ -94,30 +87,26 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Enum\Category.cs" />
+    <Compile Include="Converters\StringToTranslationConverter.cs" />
+    <Compile Include="Enum\Language.cs" />
     <Compile Include="Enum\View.cs" />
-    <Compile Include="Enum\Tag.cs" />
-    <Compile Include="Enum\EqualityOperator.cs" />
-    <Compile Include="Enum\EffectColor.cs" />
-    <Compile Include="Enum\EffectShape.cs" />
-    <Compile Include="Enum\Rarity.cs" />
-    <Compile Include="Helper\AlertSound.cs" />
-    <Compile Include="Helper\BeamEffect.cs" />
-    <Compile Include="Helper\EqualityCondition.cs" />
-    <Compile Include="Helper\Color.cs" />
-    <Compile Include="Helper\FontSize.cs" />
-    <Compile Include="Helper\MinimapIcon.cs" />
     <Compile Include="Helper\Release.cs" />
-    <Compile Include="Helper\ValueCondition.cs" />
-    <Compile Include="Interface\INavigationViewModel.cs" />
-    <Compile Include="Model\Filter.cs" />
-    <Compile Include="Model\FilterCategory.cs" />
+    <Compile Include="Model\Translator.cs" />
+    <Compile Include="Model\State.cs" />
     <Compile Include="Service\LocatorService.cs" />
-    <Compile Include="ViewModel\EditorViewModel.cs" />
+    <Compile Include="ViewModel\CompleteViewModel.cs" />
+    <Compile Include="ViewModel\PaymentViewModel.cs" />
+    <Compile Include="ViewModel\RegisterViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\WindowViewModel.cs" />
-    <Compile Include="View\EditorView.xaml.cs">
-      <DependentUpon>EditorView.xaml</DependentUpon>
+    <Compile Include="View\CompleteView.xaml.cs">
+      <DependentUpon>CompleteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PaymentView.xaml.cs">
+      <DependentUpon>PaymentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RegisterView.xaml.cs">
+      <DependentUpon>RegisterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HomeView.xaml.cs" />
     <Compile Include="View\WindowView.xaml.cs">
@@ -142,38 +131,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="View\EditorView.xaml" />
+    <Page Include="View\CompleteView.xaml" />
+    <Page Include="View\PaymentView.xaml" />
+    <Page Include="View\RegisterView.xaml" />
     <Page Include="View\WindowView.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Currency.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Home.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\ChanceBase.png" />
-    <Resource Include="Resources\Images\CraftingBase.png" />
-    <Resource Include="Resources\Images\DivinationCard.png" />
-    <Resource Include="Resources\Images\Essence.png" />
-    <Resource Include="Resources\Images\Fossil.png" />
-    <Resource Include="Resources\Images\Map.png" />
-    <Resource Include="Resources\Images\UniqueAccessory.png" />
-    <Resource Include="Resources\Images\UniqueArmour.png" />
-    <Resource Include="Resources\Images\UniqueWeapon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Flask.png" />
-    <Resource Include="Resources\Images\Fragment.png" />
-    <Resource Include="Resources\Images\Leveling.png" />
-    <Resource Include="Resources\Images\SkillGem.png" />
-    <Resource Include="Resources\Images\VendorRecipe.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="packages.config" />
+    <Resource Include="Resources\Images\da-DK.png" />
+    <Resource Include="Resources\Images\en-GB.png" />
+    <EmbeddedResource Include="Resources\Translations\da-DK.json" />
+    <EmbeddedResource Include="Resources\Translations\en-GB.json" />
     <Page Include="View\HomeView.xaml" />
-    <Resource Include="Resources\Images\General.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="FilterBuilderUpdater\FilterBuilderUpdater.csproj">
+      <Project>{21207b22-e405-43cb-b861-2b3a603f06ff}</Project>
+      <Name>FilterBuilderUpdater</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
