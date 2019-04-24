@@ -1,4 +1,7 @@
 {
   "LANGUAGE": "Language",
-  "WELCOME": "Welcome! Please select if you want to register or complete your parking."
+  "WELCOME_HEADER": "Welcome!",
+  "WELCOME_DESCRIPTION": "Please select whether you want to register or complete your parking.",
+  "REGISTER_PARKING": "Register Parking",
+  "COMPLETE_PARKING": "Complete Parking"
 }

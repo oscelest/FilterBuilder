@@ -1,4 +1,7 @@
 {
   "LANGUAGE": "Sprog",
-  "WELCOME": "Velkommen! Vælg venligst om du ønsker at starte eller fuldføre din parkering."
+  "WELCOME_HEADER": "Velkommen!",
+  "WELCOME_DESCRIPTION": "Vælg venligst om du ønsker at starte eller fuldføre din parkering.",
+  "REGISTER_PARKING": "Start Parkering",
+  "COMPLETE_PARKING": "Afslut Parkering"
 }

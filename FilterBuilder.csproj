@@ -91,9 +91,9 @@
     <Compile Include="Enum\Language.cs" />
     <Compile Include="Enum\View.cs" />
     <Compile Include="Helper\Release.cs" />
-    <Compile Include="Model\Translator.cs" />
-    <Compile Include="Model\State.cs" />
     <Compile Include="Service\LocatorService.cs" />
+    <Compile Include="Service\TranslatorService.cs" />
+    <Compile Include="State.cs" />
     <Compile Include="ViewModel\CompleteViewModel.cs" />
     <Compile Include="ViewModel\PaymentViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewModel.cs" />

@@ -6,9 +6,35 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:enum="clr-namespace:FilterBuilder.Enum"
              DataContext="{Binding Home, Source={StaticResource Locator}}">
-    <StackPanel>
-        <Label Content="{Binding Window, Path=Window.ChangeLanguageCommand,Converter={StaticResource StringToTranslationConverter}, ConverterParameter='WELCOME', Source={StaticResource Locator}}" />
-        <Button Content="Create Parking" Command="{Binding Window.ChangeViewCommand, Source={StaticResource Locator}}" CommandParameter="{x:Static enum:View.REGISTER}" />
-        <Button Content="Finish Parking" Command="{Binding Window.ChangeViewCommand, Source={StaticResource Locator}}" CommandParameter="{x:Static enum:View.COMPLETE}" />
-    </StackPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"
+               Content="{Binding Window, Path=Window.ChangeLanguageCommand, Converter={StaticResource TranslationConverter}, ConverterParameter='WELCOME_HEADER', Source={StaticResource Locator}}" />
+        <Label Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Label.Content>
+                <AccessText TextWrapping="Wrap"
+                            Text="{Binding Window, Path=Window.ChangeLanguageCommand, Converter={StaticResource TranslationConverter}, ConverterParameter='WELCOME_DESCRIPTION', Source={StaticResource Locator}}" />
+            </Label.Content>
+        </Label>
+        <Button Grid.Column="1" Grid.Row="3"
+                Command="{Binding Window.ChangeViewCommand, Source={StaticResource Locator}}" CommandParameter="{x:Static enum:View.REGISTER}"
+                Content="{Binding Window, Path=Window.ChangeLanguageCommand, Converter={StaticResource TranslationConverter}, ConverterParameter='REGISTER_PARKING', Source={StaticResource Locator}}" />
+        <Button Grid.Column="3" Grid.Row="3"
+                Command="{Binding Window.ChangeViewCommand, Source={StaticResource Locator}}" CommandParameter="{x:Static enum:View.COMPLETE}"
+                Content="{Binding Window, Path=Window.ChangeLanguageCommand, Converter={StaticResource TranslationConverter}, ConverterParameter='COMPLETE_PARKING', Source={StaticResource Locator}}" />
+    </Grid>
 </UserControl>

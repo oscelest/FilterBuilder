@@ -7,15 +7,15 @@ namespace FilterBuilder.Model {
         private static readonly Lazy<State> LazySingleton = new Lazy<State>(() => new State());
 
         private State() {
-            AvailableLanguages = new List<Translator> {
-                new Translator(Language.DANISH, "Danish"),
-                new Translator(Language.ENGLISH, "English")
+            AvailableLanguages = new List<TranslatorService> {
+                new TranslatorService(Language.DANISH, "Danish"),
+                new TranslatorService(Language.ENGLISH, "English")
             };
             CurrentLanguage = AvailableLanguages[0];
         }
 
-        public List<Translator> AvailableLanguages { get; }
-        public Translator CurrentLanguage { get; set; }
+        public List<TranslatorService> AvailableLanguages { get; }
+        public TranslatorService CurrentLanguage { get; set; }
 
         public static State Instance => LazySingleton.Value;
     }

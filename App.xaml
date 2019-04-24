@@ -11,7 +11,7 @@
              StartupUri="View/WindowView.xaml">
     <Application.Resources>
         <service:LocatorService x:Key="Locator" d:IsDataSource="True" />
-        <converters:StringToTranslationConverter x:Key="StringToTranslationConverter" />
+        <converters:StringToTranslationConverter x:Key="TranslationConverter" />
 
         <DataTemplate DataType="{x:Type viewmodel:HomeViewModel}">
             <view:HomeView />
