@@ -4,37 +4,155 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:enum="clr-namespace:FilterBuilder.Enum"
+             xmlns:filterBuilder="clr-namespace:FilterBuilder"
+             xmlns:viewModel="clr-namespace:FilterBuilder.ViewModel"
+             xmlns:helper="clr-namespace:FilterBuilder.Helper"
              DataContext="{Binding Home, Source={StaticResource Locator}}">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*" />
-            <ColumnDefinition Width="3*" />
             <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="3*" />
-            <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="8*" />
         </Grid.RowDefinitions>
-        <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"
-               Content="{Binding Window, Path=Window.ChangeLanguageCommand, Converter={StaticResource TranslationConverter}, ConverterParameter='WELCOME_HEADER', Source={StaticResource Locator}}" />
-        <Label Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center">
-            <Label.Content>
-                <AccessText TextWrapping="Wrap"
-                            Text="{Binding Window, Path=Window.ChangeLanguageCommand, Converter={StaticResource TranslationConverter}, ConverterParameter='WELCOME_DESCRIPTION', Source={StaticResource Locator}}" />
-            </Label.Content>
-        </Label>
-        <Button Grid.Column="1" Grid.Row="3"
-                Command="{Binding Window.ChangeViewCommand, Source={StaticResource Locator}}" CommandParameter="{x:Static enum:View.REGISTER}"
-                Content="{Binding Window, Path=Window.ChangeLanguageCommand, Converter={StaticResource TranslationConverter}, ConverterParameter='REGISTER_PARKING', Source={StaticResource Locator}}" />
-        <Button Grid.Column="3" Grid.Row="3"
-                Command="{Binding Window.ChangeViewCommand, Source={StaticResource Locator}}" CommandParameter="{x:Static enum:View.COMPLETE}"
-                Content="{Binding Window, Path=Window.ChangeLanguageCommand, Converter={StaticResource TranslationConverter}, ConverterParameter='COMPLETE_PARKING', Source={StaticResource Locator}}" />
+        
+        <helper:KeyboardControl Grid.Row="0" Test="{Binding LicensePlate}"/>
+
+        <Label Grid.Row="1" Content="{Binding Path=LicensePlate}" />
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="1" Command="{Binding KeyboardWriteLetterCommand}" CommandParameter="1" />
+                <Button Grid.Column="1" Content="2" />
+                <Button Grid.Column="2" Content="3" />
+                <Button Grid.Column="3" Content="4" />
+                <Button Grid.Column="4" Content="5" />
+                <Button Grid.Column="5" Content="6" />
+                <Button Grid.Column="6" Content="7" />
+                <Button Grid.Column="7" Content="8" />
+                <Button Grid.Column="8" Content="9" />
+                <Button Grid.Column="9" Content="0" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="Q" />
+                <Button Grid.Column="1" Content="W" />
+                <Button Grid.Column="2" Content="E" />
+                <Button Grid.Column="3" Content="R" />
+                <Button Grid.Column="4" Content="T" />
+                <Button Grid.Column="5" Content="Y" />
+                <Button Grid.Column="6" Content="U" />
+                <Button Grid.Column="7" Content="I" />
+                <Button Grid.Column="8" Content="O" />
+                <Button Grid.Column="9" Content="P" />
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="A" />
+                <Button Grid.Column="1" Content="S" />
+                <Button Grid.Column="2" Content="D" />
+                <Button Grid.Column="3" Content="F" />
+                <Button Grid.Column="4" Content="G" />
+                <Button Grid.Column="5" Content="H" />
+                <Button Grid.Column="6" Content="J" />
+                <Button Grid.Column="7" Content="K" />
+                <Button Grid.Column="8" Content="L" />
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1.5*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="⌧" Command="{Binding KeyboardDeleteAllCommand}" />
+                <Button Grid.Column="1" Content="Z" />
+                <Button Grid.Column="2" Content="X" />
+                <Button Grid.Column="3" Content="C" />
+                <Button Grid.Column="4" Content="V" />
+                <Button Grid.Column="5" Content="B" />
+                <Button Grid.Column="6" Content="N" />
+                <Button Grid.Column="7" Content="M" />
+                <Button Grid.Column="8" Content="⌫" Command="{Binding KeyboardDeleteLetterCommand}" />
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>
+
+<!-- <Grid.ColumnDefinitions> -->
+<!--     <ColumnDefinition Width="3*" /> -->
+<!--     <ColumnDefinition Width="3*" /> -->
+<!--     <ColumnDefinition Width="1*" /> -->
+<!--     <ColumnDefinition Width="3*" /> -->
+<!--     <ColumnDefinition Width="3*" /> -->
+<!-- </Grid.ColumnDefinitions> -->
+<!-- <Grid.RowDefinitions> -->
+<!--     <RowDefinition Height="1.5*" /> -->
+<!--     <RowDefinition Height="1*" /> -->
+<!--     <RowDefinition Height="1*" /> -->
+<!--     <RowDefinition Height="1*" /> -->
+<!--     <RowDefinition Height="1*" /> -->
+<!--     <RowDefinition Height="1.5*" /> -->
+<!-- </Grid.RowDefinitions> -->
+<!-- <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" -->
+<!--        Content="{Binding Window, Path=Window.ChangeLanguageCommand, Converter={StaticResource TranslationConverter}, ConverterParameter='WELCOME_HEADER', Source={StaticResource Locator}}" /> -->
+<!-- <Label Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"> -->
+<!--     <Label.Content> -->
+<!--         <AccessText TextWrapping="Wrap" -->
+<!--                     Text="{Binding Window, Path=Window.ChangeLanguageCommand, Converter={StaticResource TranslationConverter}, ConverterParameter='WELCOME_DESCRIPTION', Source={StaticResource Locator}}" /> -->
+<!--     </Label.Content> -->
+<!-- </Label> -->
+<!-- <Button Grid.Column="1" Grid.Row="3" Style="{StaticResource TabButton}"  -->
+<!--         Command="{Binding Window.ChangeViewCommand, Source={StaticResource Locator}}" CommandParameter="{x:Static enum:View.REGISTER}" -->
+<!--         Content="{Binding Window, Path=Window.ChangeLanguageCommand, Converter={StaticResource TranslationConverter}, ConverterParameter='REGISTER_PARKING', Source={StaticResource Locator}}" /> -->
+<!-- <Button Grid.Column="3" Grid.Row="3" Style="{StaticResource TabButton}"  -->
+<!--         Command="{Binding Window.ChangeViewCommand, Source={StaticResource Locator}}" CommandParameter="{x:Static enum:View.COMPLETE}" -->
+<!--         Content="{Binding Window, Path=Window.ChangeLanguageCommand, Converter={StaticResource TranslationConverter}, ConverterParameter='COMPLETE_PARKING', Source={StaticResource Locator}}" /> -->

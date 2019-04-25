@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Windows.Input;
 using FilterBuilder.Enum;
 using FilterBuilder.Helper;
-using FilterBuilder.Model;
+using FilterBuilder.Service;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
