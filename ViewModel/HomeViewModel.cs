@@ -1,10 +1,7 @@
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows.Input;
-using System.Windows.Media.Animation;
-using FilterBuilder.Service;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Keyboard = FilterBuilder.Helper.Keyboard;
 
 namespace FilterBuilder.ViewModel {
     public class HomeViewModel : ViewModelBase {
@@ -17,7 +14,7 @@ namespace FilterBuilder.ViewModel {
             }
         }
 
-        public char[][] Keyboard {
+        public Keyboard Keyboard {
             get { return State.Instance.Keyboard; }
             set {
                 if (value == State.Instance.Keyboard) return;
