@@ -1,40 +1,99 @@
-using System;
-using System.Diagnostics;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace FilterBuilder.Helper {
-    public class Keyboard {
-        public char[][] Layout { get; }
-        public RoutedEventHandler Callback { get; }
+    public delegate void CallbackDelegate(char character);
 
-        public Keyboard(char[][] layout, RoutedEventHandler callback) {
-            Layout = layout;
-            Callback = callback;
+    public class Keyboard {
+        public readonly List<KeyboardRow> Layout;
+
+        public Keyboard() {
+            Layout = new List<KeyboardRow>();
         }
 
-        public Grid ToElement() {
-            var wrapper = new Grid();
+        public Keyboard UnshiftRow(List<char> keys, CallbackDelegate callback) {
+            Layout.Insert(0, new KeyboardRow(keys, callback));
+            return this;
+        }
 
-            for (var row = 0; row < Layout.Length; row++) {
-                var line = new Grid();
-                Grid.SetRow(line, row);
-                wrapper.RowDefinitions.Add(new RowDefinition());
+        public Keyboard InsertRow(int rowIndex, List<char> keys, CallbackDelegate callback) {
+            Layout.Insert(rowIndex, new KeyboardRow(keys, callback));
+            return this;
+        }
 
-                for (var column = 0; column < Layout[row].Length; column++) {
-                    var button = new Button {
-                        Content = Layout[row][column]
-                    };
-                    button.Click += Callback;
-                    Grid.SetColumn(button, column);
-                    line.Children.Add(button);
-                    line.ColumnDefinitions.Add(new ColumnDefinition {
-                        Width = new GridLength(1, GridUnitType.Star)
-                    });
-                }
+        public Keyboard PushRow(List<char> keys, CallbackDelegate callback) {
+            Layout.Add(new KeyboardRow(keys, callback));
+            return this;
+        }
+
+        public Keyboard UnshiftKey(int rowIndex, char key, CallbackDelegate callback) {
+            Layout[rowIndex].UnshiftKey(key, callback);
+            return this;
+        }
+
+        public Keyboard InsertKey(int rowIndex, int keyIndex, char key, CallbackDelegate callback) {
+            Layout[rowIndex].InsertKey(keyIndex, key, callback);
+            return this;
+        }
+
+        public Keyboard PushKey(int rowIndex, char key, CallbackDelegate callback) {
+            Layout[rowIndex].PushKey(key, callback);
+            return this;
+        }
+
+        public class KeyboardRow {
+            private readonly List<KeyboardKey> _keys;
+
+            public KeyboardRow() {
+                _keys = new List<KeyboardKey>();
             }
 
-            return wrapper;
+            public KeyboardRow(List<char> keys, CallbackDelegate callback) {
+                _keys = new List<KeyboardKey>();
+                foreach (var key in keys) PushKey(key, callback);
+            }
+
+            public KeyboardRow UnshiftKey(char key, CallbackDelegate callback) {
+                _keys.Insert(0, new KeyboardKey(key, callback));
+                return this;
+            }
+
+            public KeyboardRow InsertKey(int index, char key, CallbackDelegate callback) {
+                _keys.Insert(index, new KeyboardKey(key, callback));
+                return this;
+            }
+
+            public KeyboardRow PushKey(char key, CallbackDelegate callback) {
+                _keys.Add(new KeyboardKey(key, callback));
+                return this;
+            }
+
+            public Grid ToElement() {
+                var grid = new Grid();
+                foreach (var key in _keys) grid.Children.Add(key.ToElement());
+                return grid;
+            }
+        }
+
+        public class KeyboardKey {
+            private readonly char _symbol;
+            private readonly CallbackDelegate _callback;
+
+            public KeyboardKey(char symbol, CallbackDelegate callback) {
+                _symbol = symbol;
+                _callback = callback;
+            }
+
+            public Button ToElement() {
+                var button = new Button {
+                    Content = _symbol
+                };
+                button.AddHandler(ButtonBase.ClickEvent, new RoutedEventHandler((x,o) => _callback(_symbol)), true);
+                return button;
+            }
         }
     }
 }

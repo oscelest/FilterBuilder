@@ -16,7 +16,15 @@ namespace FilterBuilder.ViewModel {
                 RaisePropertyChanged("LicensePlate");
             }
         }
-        
+
+        public char[][] Keyboard {
+            get { return State.Instance.Keyboard; }
+            set {
+                if (value == State.Instance.Keyboard) return;
+                State.Instance.Keyboard = value;
+                RaisePropertyChanged("Keyboard");
+            }
+        }
 
         public ICommand KeyboardWriteLetterCommand { get; }
         public ICommand KeyboardDeleteLetterCommand { get; }
