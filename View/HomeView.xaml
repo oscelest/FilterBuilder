@@ -17,7 +17,7 @@
 
 
         <Label Grid.Row="0" Content="{Binding Path=LicensePlate}" />
-        <helper:KeyboardControl Grid.Row="1" Keyboard="{Binding Keyboard}" />
+        <helper:KeyboardControl Grid.Row="1" Keyboard="{Binding Keyboard}"  />
 
     </Grid>
 </UserControl>

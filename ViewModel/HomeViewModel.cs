@@ -1,4 +1,8 @@
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Input;
+using System.Windows.Media.TextFormatting;
+using FilterBuilder.Helper;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Keyboard = FilterBuilder.Helper.Keyboard;
@@ -14,38 +18,32 @@ namespace FilterBuilder.ViewModel {
             }
         }
 
-        public Keyboard Keyboard {
-            get { return State.Instance.Keyboard; }
-            set {
-                if (value == State.Instance.Keyboard) return;
-                State.Instance.Keyboard = value;
-                RaisePropertyChanged("Keyboard");
-            }
-        }
-
-        public ICommand KeyboardWriteLetterCommand { get; }
-        public ICommand KeyboardDeleteLetterCommand { get; }
-        public ICommand KeyboardDeleteAllCommand { get; }
+        public Keyboard Keyboard { get; set; }
 
         public HomeViewModel() {
-            KeyboardWriteLetterCommand = new RelayCommand<string>(ExecuteKeyboardWriteLetterCommand);
-            KeyboardDeleteLetterCommand = new RelayCommand(ExecuteKeyboardDeleteLetterCommand);
-            KeyboardDeleteAllCommand = new RelayCommand(ExecuteKeyboardDeleteAllCommand);
+            Keyboard = new Keyboard()
+                .PushRow(new List<char> {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0'}, KeyboardWriteLetter)
+                .PushRow(new List<char> {'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'}, KeyboardWriteLetter)
+                .PushRow(new List<char> {'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'}, KeyboardWriteLetter)
+                .PushRow(new List<char> {'Z', 'X', 'C', 'V', 'B', 'N', 'M'}, KeyboardWriteLetter)
+                .PushKey(3, '⌫', new KeyboardKeyStyle{Width = 1.5}, KeyboardDeleteLetter)
+                .UnshiftKey(3, '⌧', new KeyboardKeyStyle{Width = 1.5}, KeyboardDeleteAll);
         }
 
-        private void ExecuteKeyboardWriteLetterCommand(string letter) {
+        private void KeyboardWriteLetter(char letter) {
+            if (LicensePlate.Length >= 10) return;
             LicensePlate += letter;
             RaisePropertyChanged("LicensePlate");
         }
 
-        private void ExecuteKeyboardDeleteLetterCommand() {
+        private void KeyboardDeleteLetter(char letter) {
             // TODO: Should check for length
             if (LicensePlate.Length == 0) return;
-            LicensePlate = LicensePlate.Remove(State.Instance.LicensePlate.Length - 1, 1);
+            LicensePlate = LicensePlate.Remove(LicensePlate.Length - 1);
             RaisePropertyChanged("LicensePlate");
         }
 
-        private void ExecuteKeyboardDeleteAllCommand() {
+        private void KeyboardDeleteAll(char letter) {
             LicensePlate = "";
             RaisePropertyChanged("LicensePlate");
         }
