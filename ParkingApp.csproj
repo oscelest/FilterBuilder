@@ -155,9 +155,9 @@
     <Page Include="View\HomeView.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="FilterBuilderUpdater\FilterBuilderUpdater.csproj">
+    <ProjectReference Include="ParkingAppUpdater\ParkingAppUpdater.csproj">
       <Project>{21207b22-e405-43cb-b861-2b3a603f06ff}</Project>
-      <Name>FilterBuilderUpdater</Name>
+      <Name>ParkingAppUpdater</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
