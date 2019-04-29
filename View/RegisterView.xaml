@@ -1,10 +1,10 @@
-<UserControl x:Class="FilterBuilder.View.RegisterView"
+<UserControl x:Class="ParkingApp.View.RegisterView"
              mc:Ignorable="d"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:enum="clr-namespace:FilterBuilder.Enum"
+             xmlns:enum="clr-namespace:ParkingApp.Enum"
              DataContext="{Binding Register, Source={StaticResource Locator}}">
     <StackPanel>
         <Button Content="Back" Command="{Binding Window.ChangeViewCommand, Source={StaticResource Locator}}" CommandParameter="{x:Static enum:View.HOME}" />

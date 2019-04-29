@@ -1,6 +1,6 @@
 using System;
 
-namespace FilterBuilder.Enum {
+namespace ParkingApp.Enum {
     public sealed class Language {
         private readonly string _value;
 

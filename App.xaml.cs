@@ -1,4 +1,4 @@
-﻿namespace FilterBuilder {
+﻿namespace ParkingApp {
     /// <summary>
     ///     Interaction logic for App.xaml
     /// </summary>

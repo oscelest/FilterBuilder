@@ -1,18 +1,18 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using FilterBuilder.Enum;
-using FilterBuilder.Helper;
+using ParkingApp.Enum;
+using ParkingApp.Helper;
 using Newtonsoft.Json;
 
-namespace FilterBuilder.Service {
+namespace ParkingApp.Service {
     public class TranslatorService {
         public TranslatorService(Language id, string title) {
             Id = id;
             Title = title;
-            Icon = $"pack://application:,,,/FilterBuilder;component/Resources/Images/{id}.png";
-            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"FilterBuilder.Resources.Translations.{id}.json");
-            if (stream == null) throw new FileNotFoundException($"FilterBuilder.Resources.Translations.{id}.json");
+            Icon = $"pack://application:,,,/ParkingApp;component/Resources/Images/{id}.png";
+            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"ParkingApp.Resources.Translations.{id}.json");
+            if (stream == null) throw new FileNotFoundException($"ParkingApp.Resources.Translations.{id}.json");
             Translations = JsonConvert.DeserializeObject<Dictionary<string, string>>(new StreamReader(stream).ReadToEnd());
         }
 

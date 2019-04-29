@@ -1,13 +1,9 @@
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Windows.Input;
-using System.Windows.Media.TextFormatting;
-using FilterBuilder.Helper;
+using ParkingApp.Helper;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using Keyboard = FilterBuilder.Helper.Keyboard;
+using Keyboard = ParkingApp.Helper.Keyboard;
 
-namespace FilterBuilder.ViewModel {
+namespace ParkingApp.ViewModel {
     public class HomeViewModel : ViewModelBase {
         public string LicensePlate {
             get { return State.Instance.LicensePlate; }

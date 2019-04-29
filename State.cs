@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using FilterBuilder.Enum;
-using FilterBuilder.Helper;
-using FilterBuilder.Service;
+using ParkingApp.Enum;
+using ParkingApp.Helper;
+using ParkingApp.Service;
 
-namespace FilterBuilder {
+namespace ParkingApp {
     public class State {
         private static readonly Lazy<State> LazySingleton = new Lazy<State>(() => new State());
 

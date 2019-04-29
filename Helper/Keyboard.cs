@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 
-namespace FilterBuilder.Helper {
+namespace ParkingApp.Helper {
     public delegate void CallbackDelegate(char character);
 
     public class KeyboardKeyStyle {

@@ -1,6 +1,6 @@
 using GalaSoft.MvvmLight;
 
-namespace FilterBuilder.ViewModel {
+namespace ParkingApp.ViewModel {
     public class PaymentViewModel : ViewModelBase {
     }
 }

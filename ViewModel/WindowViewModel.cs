@@ -7,14 +7,14 @@ using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Windows.Input;
-using FilterBuilder.Enum;
-using FilterBuilder.Helper;
-using FilterBuilder.Service;
+using ParkingApp.Enum;
+using ParkingApp.Helper;
+using ParkingApp.Service;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 
-namespace FilterBuilder.ViewModel {
+namespace ParkingApp.ViewModel {
     public class WindowViewModel : ViewModelBase {
         public WindowViewModel() {
             Title = "Item Filter Builder";
@@ -51,14 +51,14 @@ namespace FilterBuilder.ViewModel {
             httpClient.DefaultRequestHeaders.Add("User-Agent", "C# System.Net.HTTP");
             try {
                 var currentVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString().Split('.').Select(int.Parse).ToArray();
-                var release = JsonConvert.DeserializeObject<List<Release>>(await httpClient.GetStringAsync("https://api.github.com/repos/oscelest/FilterBuilder/releases")).SingleOrDefault(x => {
+                var release = JsonConvert.DeserializeObject<List<Release>>(await httpClient.GetStringAsync("https://api.github.com/repos/oscelest/ParkingApp/releases")).SingleOrDefault(x => {
                     if (x.Prerelease) return false;
                     var releaseVersion = x.TagName.Split('.').Select(int.Parse).ToArray();
                     return !(currentVersion[0] >= releaseVersion[0] && currentVersion[1] >= releaseVersion[1] && currentVersion[2] >= releaseVersion[2] && currentVersion[3] >= releaseVersion[3]);
                 });
                 if (release == null) return;
                 new WebClient().DownloadFile(release.Assets[0].BrowserDownloadUrl, Path.Combine(Path.GetTempPath(), "release.zip"));
-                Process.Start(Path.Combine(Directory.GetCurrentDirectory(), "Updater", "FilterBuilderUpdater.exe"), $"{Process.GetCurrentProcess().Id} {release.Assets[0].BrowserDownloadUrl}");
+                Process.Start(Path.Combine(Directory.GetCurrentDirectory(), "Updater", "ParkingAppUpdater.exe"), $"{Process.GetCurrentProcess().Id} {release.Assets[0].BrowserDownloadUrl}");
             }
             catch (Exception e) {
                 Debug.WriteLine(e);

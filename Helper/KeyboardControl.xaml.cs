@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace FilterBuilder.Helper {
+namespace ParkingApp.Helper {
     public partial class KeyboardControl {
         public static readonly DependencyProperty KeyboardProperty =
             DependencyProperty.Register("Keyboard", typeof(Keyboard), typeof(KeyboardControl), new PropertyMetadata(new Keyboard(), KeyboardPropertyCallback));

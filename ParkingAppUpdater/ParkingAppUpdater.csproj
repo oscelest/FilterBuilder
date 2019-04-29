@@ -7,8 +7,8 @@
     <ProjectGuid>{21207B22-E405-43CB-B861-2B3A603F06FF}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FilterBuilderUpdater</RootNamespace>
-    <AssemblyName>FilterBuilderUpdater</AssemblyName>
+    <RootNamespace>ParkingAppUpdater</RootNamespace>
+    <AssemblyName>ParkingAppUpdater</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

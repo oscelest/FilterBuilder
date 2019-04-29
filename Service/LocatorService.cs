@@ -1,6 +1,6 @@
-using FilterBuilder.ViewModel;
+using ParkingApp.ViewModel;
 
-namespace FilterBuilder.Service {
+namespace ParkingApp.Service {
     public class LocatorService {
         private static WindowViewModel _window;
         private static HomeViewModel _home;

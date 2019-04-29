@@ -4,7 +4,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Net;
 
-namespace FilterBuilderUpdater {
+namespace ParkingAppUpdater {
     internal class Program {
         public static void Main(string[] args) {
             var processId = int.Parse(args[0]);
