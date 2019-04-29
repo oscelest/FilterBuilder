@@ -2,6 +2,7 @@
   "LANGUAGE": "Language",
   "WELCOME_HEADER": "Welcome!",
   "WELCOME_DESCRIPTION": "Please select whether you want to register or complete your parking.",
+  "BUTTON_LICENSE_PLATE_SUBMIT": "Search",
   "REGISTER_PARKING": "Register Parking",
   "COMPLETE_PARKING": "Complete Parking"
 }

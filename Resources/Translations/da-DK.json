@@ -1,7 +1,8 @@
 {
   "LANGUAGE": "Sprog",
   "WELCOME_HEADER": "Velkommen!",
-  "WELCOME_DESCRIPTION": "Vælg venligst om du ønsker at starte eller fuldføre din parkering.",
+  "WELCOME_DESCRIPTION": "For at starte eller afslutte din parkering, venligst indtast din nummerplade og vælg det land hvor nummerpladen kommer fra.",
+  "BUTTON_LICENSE_PLATE_SUBMIT": "Søg",
   "REGISTER_PARKING": "Start Parkering",
   "COMPLETE_PARKING": "Afslut Parkering"
 }

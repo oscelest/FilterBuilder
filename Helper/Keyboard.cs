@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
+using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 
@@ -177,19 +178,12 @@ namespace FilterBuilder.Helper {
             public Border ToElement() {
                 var button = new Button {
                     Content = _symbol,
-                    Background = new SolidColorBrush(new Color {R = 250, G = 171, B = 26, A = 255}),
-                    BorderBrush = new SolidColorBrush(new Color {A = 0}),
-                    FontSize = 16,
-                    FontWeight = FontWeights.Medium,
-                    FontFamily = new FontFamily("Century Gothic")
+                    Style = Application.Current.FindResource("KeyboardButtonStyle") as Style
                 };
                 button.AddHandler(ButtonBase.ClickEvent, new RoutedEventHandler((x, o) => _callback(_symbol)), true);
                 var border = new Border {
                     Child = button,
-                    Margin = new Thickness(10, 10, 0, 0),
-                    BorderBrush = new SolidColorBrush(new Color {R = 250, G = 171, B = 26, A = 119}),
-                    BorderThickness = new Thickness(5, 5, 5, 5),
-                    CornerRadius = new CornerRadius(3, 3, 3, 3)
+                    Style = Application.Current.FindResource("KeyboardButtonBorderStyle") as Style,
                 };
 
                 return border;
