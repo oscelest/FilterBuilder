@@ -5,10 +5,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:enum="clr-namespace:ParkingApp.Enum"
-             DataContext="{Binding Complete, Source={StaticResource Locator}}">
+             xmlns:parkingApp="clr-namespace:ParkingApp"
+             DataContext="{Binding Locator.Complete, Source={x:Static parkingApp:State.Instance}}">
     <StackPanel>
-        <Button Content="Back" Command="{Binding Window.ChangeViewCommand, Source={StaticResource Locator}}" CommandParameter="{x:Static enum:View.HOME}" />
-        <Button Content="Pay" Command="{Binding Window.ChangeViewCommand, Source={StaticResource Locator}}" CommandParameter="{x:Static enum:View.PAYMENT}" />
+        <Button Content="Back" Command="{Binding Locator.Window.ChangeViewCommand, Source={x:Static parkingApp:State.Instance}}" CommandParameter="{x:Static enum:View.HOME}" />
+        <Button Content="Pay" Command="{Binding Locator.Window.ChangeViewCommand, Source={x:Static parkingApp:State.Instance}}" CommandParameter="{x:Static enum:View.PAYMENT}" />
         <Label>This is the page where the parking should be completed.</Label>
     </StackPanel>
 </UserControl>

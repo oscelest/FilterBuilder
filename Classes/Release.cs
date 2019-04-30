@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace ParkingApp.Helper {
+namespace ParkingApp.Classes {
     public class Release {
         [JsonProperty("url")] public string Url { get; set; }
         [JsonProperty("assets_url")] public string AssetsUrl { get; set; }

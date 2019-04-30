@@ -5,20 +5,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:helper="clr-namespace:ParkingApp.Helper"
-             DataContext="{Binding Home, Source={StaticResource Locator}}">
+             xmlns:parkingApp="clr-namespace:ParkingApp"
+             DataContext="{Binding Locator.Home, Source={x:Static parkingApp:State.Instance}}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="2*" />
             <RowDefinition Height="40" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="45" />
             <RowDefinition Height="10*" />
         </Grid.RowDefinitions>
 
+        <!-- Header element -->
         <Label Grid.Row="0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold"
-               Content="{Binding Window, Path=Window.ChangeLanguageCommand, Converter={StaticResource TranslationConverter}, ConverterParameter='WELCOME_HEADER', Source={StaticResource Locator}}" />
+               Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='WELCOME_HEADER', Source={x:Static parkingApp:State.Instance}}" />
+
+        <!-- Header description element -->
         <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
@@ -26,35 +30,36 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="1" TextWrapping="WrapWithOverflow" FontSize="16"
-                       Text="{Binding Window, Path=Window.ChangeLanguageCommand, Converter={StaticResource TranslationConverter}, ConverterParameter='WELCOME_DESCRIPTION', Source={StaticResource Locator}}" />
+                       Text="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='WELCOME_DESCRIPTION', Source={x:Static parkingApp:State.Instance}}" />
         </Grid>
 
-        <Grid Grid.Row="2">
+        <!-- Select, text submit combobox grid element -->
+        <Grid Grid.Row="2" Margin="0,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="70" />
                 <ColumnDefinition Width="300" />
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="100" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-            <ComboBox Grid.Column="1">
+            <ComboBox Grid.Column="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
                 <ComboBoxItem IsSelected="True">
-                    <Image Source="../Resources/Images/da-DK.png" />
+                    <Image Source="../Resources/Images/da-DK.png" Height="30" RenderOptions.BitmapScalingMode="HighQuality" />
                 </ComboBoxItem>
                 <ComboBoxItem>
-                    <Image Source="../Resources/Images/en-GB.png" />
+                    <Image Source="../Resources/Images/en-GB.png" Height="30" RenderOptions.BitmapScalingMode="HighQuality" />
                 </ComboBoxItem>
             </ComboBox>
             <Border Grid.Column="2" BorderBrush="Black" BorderThickness="0,0,0,1" Margin="10,0">
-                <TextBlock Text="{Binding Path=LicensePlate}"  FontSize="30" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding Path=LicensePlate}" FontSize="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
             </Border>
             <Button Grid.Column="3"
-                    Content="{Binding Window, Path=Window.ChangeLanguageCommand, Converter={StaticResource TranslationConverter}, ConverterParameter='BUTTON_LICENSE_PLATE_SUBMIT', Source={StaticResource Locator}}" />
-
+                    Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='BUTTON_LICENSE_PLATE_SUBMIT', Source={x:Static parkingApp:State.Instance}}"
+                    Command="{Binding Locator.Home.LicensePlateLookupCommand, Source={x:Static parkingApp:State.Instance}}"/>
         </Grid>
 
+        <!-- Keyboard input element -->
         <helper:KeyboardControl Grid.Row="3" Keyboard="{Binding Keyboard}" />
 
     </Grid>
 </UserControl>
-

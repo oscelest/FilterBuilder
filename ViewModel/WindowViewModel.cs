@@ -7,45 +7,60 @@ using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Windows.Input;
+using System.Windows.Media.Media3D;
 using ParkingApp.Enum;
 using ParkingApp.Helper;
-using ParkingApp.Service;
+using ParkingApp.Classes;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 
 namespace ParkingApp.ViewModel {
     public class WindowViewModel : ViewModelBase {
+        public string Title { get; set; }
+        public ICommand ChangeViewCommand { get; }
+        public ICommand ChangeLanguageCommand { get; }
+
+        public ViewModelBase CurrentViewModel {
+            get { return State.Instance.CurrentViewModel; }
+            set {
+                if (value == State.Instance.CurrentViewModel) return;
+                State.Instance.CurrentViewModel = value;
+                RaisePropertyChanged("CurrentViewModel");
+            }
+        }
+
+        public Translator CurrentLanguage {
+            get { return State.Instance.CurrentLanguage; }
+            set {
+                if (value == State.Instance.CurrentLanguage) return;
+                State.Instance.CurrentLanguage = value;
+                RaisePropertyChanged("CurrentLanguage");
+            }
+        }
+
+        public List<Translator> AvailableLanguages {
+            get {
+                return State.Instance.AvailableLanguages.Select(kvp => kvp.Value).ToList();
+            }
+        }
+
         public WindowViewModel() {
             Title = "Item Filter Builder";
             ChangeViewCommand = new RelayCommand<Enum.View>(ExecuteChangeViewCommand);
             ChangeLanguageCommand = new RelayCommand<Language>(ExecuteChangeLanguageCommand);
-            ExecuteChangeViewCommand(Enum.View.HOME);
             ExecuteCheckUpdateCommand();
         }
 
-        public string Title { get; set; }
-        public ViewModelBase CurrentViewModel { get; set; }
-        public ICommand ChangeViewCommand { get; }
-        public ICommand ChangeLanguageCommand { get; }
-
-        public static Dictionary<Enum.View, ViewModelBase> ViewModels { get; } = new Dictionary<Enum.View, ViewModelBase> {
-            {Enum.View.HOME, new HomeViewModel()},
-            {Enum.View.REGISTER, new RegisterViewModel()},
-            {Enum.View.COMPLETE, new CompleteViewModel()},
-            {Enum.View.PAYMENT, new PaymentViewModel()}
-        };
-
         private void ExecuteChangeViewCommand(Enum.View p) {
-            CurrentViewModel = ViewModels[p];
-            RaisePropertyChanged("CurrentViewModel");
+            CurrentViewModel = State.Instance.AvailableViewModels[p];
         }
 
         private void ExecuteChangeLanguageCommand(Language p) {
-            State.Instance.CurrentLanguage = State.Instance.AvailableLanguages.SingleOrDefault(v => v.Id == p);
-            RaisePropertyChanged("ChangeLanguageCommand");
+            Debug.WriteLine(p);
+            CurrentLanguage = State.Instance.AvailableLanguages[p];
         }
-
+        
         private async void ExecuteCheckUpdateCommand() {
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("User-Agent", "C# System.Net.HTTP");

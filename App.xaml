@@ -6,12 +6,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:view="clr-namespace:ParkingApp.View"
              xmlns:viewmodel="clr-namespace:ParkingApp.ViewModel"
-             xmlns:service="clr-namespace:ParkingApp.Service"
              xmlns:converters="clr-namespace:ParkingApp.Converters"
              StartupUri="View/WindowView.xaml">
     <Application.Resources>
-        <service:LocatorService x:Key="Locator" d:IsDataSource="True" />
         <converters:StringToTranslationConverter x:Key="TranslationConverter" />
+        <converters:ValueToVisibilityConverter x:Key="ValueToVisibilityConverter" />
 
         <DataTemplate DataType="{x:Type viewmodel:HomeViewModel}">
             <view:HomeView />
@@ -56,7 +55,7 @@
             <Setter Property="FontWeight" Value="Medium" />
             <Setter Property="FontFamily" Value="Century Gothic" />
             <Setter Property="Cursor" Value="Hand" />
-            
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">

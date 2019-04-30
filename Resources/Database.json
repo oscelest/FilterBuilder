@@ -1,0 +1,22 @@
+{
+  "da-DK": {
+    "AA11111": [
+      {
+        "id": "1b45eaea-5eff-43c9-afc2-9ddf5c39aabd",
+        "time_registered": "2019-04-30T08:28:56.782Z",
+        "time_completed": null
+      }
+    ],
+    "BB22222": [],
+    "CC33333": [
+      {
+        "id": "f6212003-9969-404e-9aab-2ea3a4cfd7e1",
+        "time_registered": "2019-04-30T08:28:56.782Z",
+        "time_completed": "2019-04-30T14:54:12.432Z"
+      }
+    ]
+  },
+  "en-UK": {
+    
+  }
+}

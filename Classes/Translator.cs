@@ -5,9 +5,9 @@ using ParkingApp.Enum;
 using ParkingApp.Helper;
 using Newtonsoft.Json;
 
-namespace ParkingApp.Service {
-    public class TranslatorService {
-        public TranslatorService(Language id, string title) {
+namespace ParkingApp.Classes {
+    public class Translator {
+        public Translator(Language id, string title) {
             Id = id;
             Title = title;
             Icon = $"pack://application:,,,/ParkingApp;component/Resources/Images/{id}.png";

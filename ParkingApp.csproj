@@ -91,17 +91,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\Parking.cs" />
+    <Compile Include="Classes\Release.cs" />
+    <Compile Include="Classes\Translator.cs" />
     <Compile Include="Converters\StringToTranslationConverter.cs" />
+    <Compile Include="Converters\ValueToVisibilityConverter.cs" />
     <Compile Include="Enum\Language.cs" />
     <Compile Include="Enum\View.cs" />
-    <Compile Include="Helper\Keyboard.cs" />
-    <Compile Include="Helper\KeyboardControl.xaml.cs">
-      <DependentUpon>KeyboardControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Helper\Release.cs" />
-    <Compile Include="Service\LocatorService.cs" />
-    <Compile Include="Service\TranslatorService.cs" />
     <Compile Include="State.cs" />
+    <Compile Include="UserControls\Keyboard.cs">
+      <DependentUpon>Keyboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\CompleteViewModel.cs" />
     <Compile Include="ViewModel\PaymentViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewModel.cs" />
@@ -139,7 +139,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Helper\KeyboardControl.xaml" />
+    <Page Include="UserControls\Keyboard.xaml" />
     <Page Include="View\CompleteView.xaml" />
     <Page Include="View\PaymentView.xaml" />
     <Page Include="View\RegisterView.xaml" />
@@ -148,6 +148,7 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="packages.config" />
+    <EmbeddedResource Include="Resources\Database.json" />
     <Resource Include="Resources\Images\da-DK.png" />
     <Resource Include="Resources\Images\en-GB.png" />
     <EmbeddedResource Include="Resources\Translations\da-DK.json" />
@@ -159,6 +160,9 @@
       <Project>{21207b22-e405-43cb-b861-2b3a603f06ff}</Project>
       <Name>ParkingAppUpdater</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Converters\JSON" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
