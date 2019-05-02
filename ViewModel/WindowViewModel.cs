@@ -57,7 +57,6 @@ namespace ParkingApp.ViewModel {
         }
 
         private void ExecuteChangeLanguageCommand(Language p) {
-            Debug.WriteLine(p);
             CurrentLanguage = State.Instance.AvailableLanguages[p];
         }
         

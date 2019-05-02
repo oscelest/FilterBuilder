@@ -23,7 +23,7 @@ namespace ParkingApp.ViewModel {
                 RaisePropertyChanged("LicensePlate");
             }
         }
-        
+
         public Country Country {
             get { return State.Instance.CurrentCountry; }
             set {
@@ -60,14 +60,8 @@ namespace ParkingApp.ViewModel {
         }
 
         public void ExecuteLicensePlateLookupCommand() {
-            try {
-                State.Instance.AvailableParkings = Parking.GetByLicensePlate(Country, LicensePlate);
-                State.Instance.CurrentParking = State.Instance.AvailableParkings.Values.FirstOrDefault(x => x.TimeCompleted == null);
-            }
-            catch (Exception e) {
-                Debug.WriteLine(e);
-            }
-
+            State.Instance.AvailableParkings = Parking.GetByLicensePlate(Country, LicensePlate);
+            State.Instance.CurrentParking = State.Instance.AvailableParkings.Values.FirstOrDefault(x => x.TimeCompleted == null);
             State.Instance.Locator.Window.ChangeViewCommand.Execute(Enum.View.REGISTER);
         }
 
