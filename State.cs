@@ -15,12 +15,13 @@ namespace ParkingApp {
         public Dictionary<string, Parking> AvailableParkings { get; set; }
         public Translator CurrentLanguage { get; set; }
         public Dictionary<Language, Translator> AvailableLanguages { get; }
+        public Country CurrentCountry { get; set; }
+        public Dictionary<Language, Country> AvailableCountries { get; }
         public ViewModelBase CurrentViewModel { get; set; }
         public Dictionary<Enum.View, ViewModelBase> AvailableViewModels { get; }
         public LocatorService Locator => LocatorService.Instance;
         public string LicensePlate { get; set; }
-        public string Country { get; set; }
-        public int HourlyPrice { get; set; }
+        public int HourlyPrice { get; }
 
         private State() {
             AvailableLanguages = new Dictionary<Language, Translator> {
@@ -33,11 +34,15 @@ namespace ParkingApp {
                 {Enum.View.COMPLETE, Locator.Complete},
                 {Enum.View.PAYMENT, Locator.Payment}
             };
+            AvailableCountries = new Dictionary<Language, Country> {
+                {Language.DANISH, Enum.Country.DENMARK},
+                {Language.ENGLISH, Enum.Country.GREAT_BRITAIN},
+            };
             CurrentLanguage = AvailableLanguages[Language.DANISH];
             CurrentViewModel = AvailableViewModels[Enum.View.HOME];
             LicensePlate = "AA11111";
-            Country = "da-DK";
-            HourlyPrice = 2249;
+            CurrentCountry = Country.DENMARK;
+            HourlyPrice = 949;
         }
 
         public static State Instance => LazySingleton.Value;

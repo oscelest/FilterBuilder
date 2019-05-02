@@ -11,6 +11,8 @@
     <Application.Resources>
         <converters:StringToTranslationConverter x:Key="TranslationConverter" />
         <converters:ValueToVisibilityConverter x:Key="ValueToVisibilityConverter" />
+        <converters:CountryToFlagResourceConverter x:Key="CountryToFlagResourceConverter" />
+        <converters:CountryDictionaryToCountryConverter x:Key="CountryDictionaryToCountryConverter" />
 
         <DataTemplate DataType="{x:Type viewmodel:HomeViewModel}">
             <view:HomeView />

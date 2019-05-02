@@ -3,6 +3,15 @@
   "WELCOME_HEADER": "Velkommen!",
   "WELCOME_DESCRIPTION": "For at starte eller afslutte din parkering, venligst indtast din nummerplade og vælg det land hvor nummerpladen kommer fra.",
   "BUTTON_LICENSE_PLATE_SUBMIT": "Søg",
-  "REGISTER_PARKING": "Start Parkering",
-  "COMPLETE_PARKING": "Afslut Parkering"
+
+  "REGISTER_PARKING_HEADER": "Påbegynd parkering",
+  "REGISTER_PARKING_PRICE": "Pris per time:",
+  "BUTTON_REGISTER_PARKING": "Bekræft",
+  
+  "COMPLETE_PARKING_HEADER": "Afslut parkering",
+  "COMPLETE_PARKING_STARTED": "Parkeringen blev registreret:",
+  "COMPLETE_PARKING_PRICE": "Pris totalt:",
+  "BUTTON_COMPLETE_PARKING": "Betal og afslut parkering",
+  
+  "BUTTON_CANCEL": "Fortryd"
 }

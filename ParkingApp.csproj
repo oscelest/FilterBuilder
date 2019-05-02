@@ -94,8 +94,11 @@
     <Compile Include="Classes\Parking.cs" />
     <Compile Include="Classes\Release.cs" />
     <Compile Include="Classes\Translator.cs" />
+    <Compile Include="Converters\CountryDictionaryToCountryConverter.cs" />
+    <Compile Include="Converters\CountryToFlagResourceConverter.cs" />
     <Compile Include="Converters\StringToTranslationConverter.cs" />
     <Compile Include="Converters\ValueToVisibilityConverter.cs" />
+    <Compile Include="Enum\Country.cs" />
     <Compile Include="Enum\Language.cs" />
     <Compile Include="Enum\View.cs" />
     <Compile Include="State.cs" />
@@ -160,9 +163,6 @@
       <Project>{21207b22-e405-43cb-b861-2b3a603f06ff}</Project>
       <Name>ParkingAppUpdater</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Converters\JSON" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

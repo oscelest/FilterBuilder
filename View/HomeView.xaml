@@ -42,20 +42,22 @@
                 <ColumnDefinition Width="100" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-            <ComboBox Grid.Column="1" BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
-                <ComboBoxItem IsSelected="True">
-                    <Image Source="../Resources/Images/da-DK.png" Height="30" RenderOptions.BitmapScalingMode="HighQuality" />
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    <Image Source="../Resources/Images/en-GB.png" Height="30" RenderOptions.BitmapScalingMode="HighQuality" />
-                </ComboBoxItem>
+            <ComboBox Grid.Column="1" 
+                      ItemsSource="{Binding AvailableCountries, Source={x:Static parkingApp:State.Instance}}"
+                      SelectedItem="{Binding Country, Converter={StaticResource CountryDictionaryToCountryConverter}}"
+                      BorderThickness="0" Background="Transparent" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Key, Converter={StaticResource CountryToFlagResourceConverter}}" Height="30" RenderOptions.BitmapScalingMode="HighQuality" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
             </ComboBox>
             <Border Grid.Column="2" BorderBrush="Black" BorderThickness="0,0,0,1" Margin="10,0">
                 <TextBlock Text="{Binding Path=LicensePlate}" FontSize="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
             </Border>
             <Button Grid.Column="3"
                     Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='BUTTON_LICENSE_PLATE_SUBMIT', Source={x:Static parkingApp:State.Instance}}"
-                    Command="{Binding Locator.Home.LicensePlateLookupCommand, Source={x:Static parkingApp:State.Instance}}"/>
+                    Command="{Binding Locator.Home.LicensePlateLookupCommand, Source={x:Static parkingApp:State.Instance}}" />
         </Grid>
 
         <!-- Keyboard input element -->

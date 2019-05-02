@@ -22,7 +22,7 @@ namespace ParkingApp.Classes {
         public Dictionary<string, string> Translations { get; }
 
         public string Translate(string token) {
-            return Translations[token];
+            return Translations.ContainsKey(token) ? Translations[token] : "TRANSLATION MISSING";
         }
     }
 }

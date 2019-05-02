@@ -2,14 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using ParkingApp.Helper;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using ParkingApp.Classes;
+using ParkingApp.Enum;
 using Keyboard = ParkingApp.Helper.Keyboard;
 
 namespace ParkingApp.ViewModel {
@@ -17,21 +15,21 @@ namespace ParkingApp.ViewModel {
         public Keyboard Keyboard { get; set; }
         public ICommand LicensePlateLookupCommand { get; }
 
-        public string Country {
-            get { return State.Instance.Country; }
-            set {
-                if (value == State.Instance.Country) return;
-                State.Instance.Country = value;
-                RaisePropertyChanged("Country");
-            }
-        }
-
         public string LicensePlate {
             get { return State.Instance.LicensePlate; }
             set {
                 if (value == State.Instance.LicensePlate) return;
                 State.Instance.LicensePlate = value;
                 RaisePropertyChanged("LicensePlate");
+            }
+        }
+        
+        public Country Country {
+            get { return State.Instance.CurrentCountry; }
+            set {
+                if (value == State.Instance.CurrentCountry) return;
+                State.Instance.CurrentCountry = value;
+                RaisePropertyChanged("Country");
             }
         }
 

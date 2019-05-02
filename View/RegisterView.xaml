@@ -8,9 +8,11 @@
              xmlns:parkingApp="clr-namespace:ParkingApp"
              DataContext="{Binding Locator.Payment, Source={x:Static parkingApp:State.Instance}}">
     <StackPanel>
-        <TextBlock>PAGE</TextBlock>
-        <Grid Visibility="{Binding CurrentParking, Converter={StaticResource ValueToVisibilityConverter}, ConverterParameter='true', Source={x:Static parkingApp:State.Instance}}">
+        <Grid
+            Visibility="{Binding CurrentParking, Converter={StaticResource ValueToVisibilityConverter}, ConverterParameter='true', Source={x:Static parkingApp:State.Instance}}">
             <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
@@ -18,21 +20,57 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0">Something here</TextBlock>
-            <TextBlock Grid.Row="1" Text="{Binding CurrentParking.Id, Source={x:Static parkingApp:State.Instance}}" />
-            <TextBlock Grid.Row="2" Text="{Binding CurrentParking.TimeRegistered, Source={x:Static parkingApp:State.Instance}}" />
-            <TextBlock Grid.Row="3" Text="{Binding CurrentParking.TimeCompleted, Source={x:Static parkingApp:State.Instance}}" />
-            <Button Grid.Row="4" Content="Complete" Command="{Binding Locator.Window.ChangeViewCommand, Source={x:Static parkingApp:State.Instance}}" CommandParameter="{x:Static enum:View.HOME}" />
+            <Label Grid.Row="0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold"
+                   Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='COMPLETE_PARKING_HEADER', Source={x:Static parkingApp:State.Instance}}" />
+
+            <Label Grid.Row="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold"
+                   Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='COMPLETE_PARKING_STARTED', Source={x:Static parkingApp:State.Instance}}" />
+            <Label Grid.Row="2" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold"
+                   Content="{Binding Locator.Register.TimeRegistered, Source={x:Static parkingApp:State.Instance}}" />
+
+            <Label Grid.Row="3" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold"
+                   Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='COMPLETE_PARKING_PRICE', Source={x:Static parkingApp:State.Instance}}" />
+            <Label Grid.Row="4" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold"
+                   Content="{Binding Locator.Register.TotalPrice, Source={x:Static parkingApp:State.Instance}}" />
+
+            <Button Grid.Row="5" Width="200"
+                    Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='BUTTON_COMPLETE_PARKING', Source={x:Static parkingApp:State.Instance}}"
+                    Command="{Binding Locator.Window.ChangeViewCommand, Source={x:Static parkingApp:State.Instance}}" CommandParameter="{x:Static enum:View.PAYMENT}" />
+            
+            <Button Grid.Row="6" Width="200"
+                    Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='BUTTON_CANCEL', Source={x:Static parkingApp:State.Instance}}"
+                    Command="{Binding Locator.Window.ChangeViewCommand, Source={x:Static parkingApp:State.Instance}}" CommandParameter="{x:Static enum:View.HOME}" />
+
+
+            <!-- <TextBlock Grid.Row="1" Text="{Binding CurrentParking.Id, Source={x:Static parkingApp:State.Instance}}" /> -->
+            <!-- <TextBlock Grid.Row="2" Text="{Binding CurrentParking.TimeRegistered, Source={x:Static parkingApp:State.Instance}}" /> -->
+            <!-- <TextBlock Grid.Row="3" Text="{Binding CurrentParking.TimeCompleted, Source={x:Static parkingApp:State.Instance}}" /> -->
         </Grid>
 
         <Grid Visibility="{Binding CurrentParking, Converter={StaticResource ValueToVisibilityConverter}, ConverterParameter='false', Source={x:Static parkingApp:State.Instance}}">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0">Nothing here</TextBlock>
-            <Button Grid.Row="1" Content="Back" Command="{Binding Locator.Window.ChangeViewCommand, Source={x:Static parkingApp:State.Instance}}" CommandParameter="{x:Static enum:View.HOME}" />
+            <Label Grid.Row="0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold"
+                   Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='REGISTER_PARKING_HEADER', Source={x:Static parkingApp:State.Instance}}" />
+
+            <Label Grid.Row="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold"
+                   Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='REGISTER_PARKING_PRICE', Source={x:Static parkingApp:State.Instance}}" />
+            <Label Grid.Row="2" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold"
+                   Content="{Binding Locator.Register.HourlyPrice, Source={x:Static parkingApp:State.Instance}}" />
+
+            <Button Grid.Row="3" Width="200"
+                    Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='BUTTON_REGISTER_PARKING', Source={x:Static parkingApp:State.Instance}}"
+                    Command="{Binding Locator.Window.ChangeViewCommand, Source={x:Static parkingApp:State.Instance}}" CommandParameter="{x:Static enum:View.PAYMENT}" />
+            
+            <Button Grid.Row="4" Width="200"
+                    Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='BUTTON_CANCEL', Source={x:Static parkingApp:State.Instance}}"
+                    Command="{Binding Locator.Window.ChangeViewCommand, Source={x:Static parkingApp:State.Instance}}" CommandParameter="{x:Static enum:View.HOME}" />
         </Grid>
 
     </StackPanel>
