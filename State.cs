@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using GalaSoft.MvvmLight;
 using ParkingApp.Enum;
 using ParkingApp.Helper;
@@ -12,7 +13,9 @@ namespace ParkingApp {
         private static readonly Lazy<State> LazySingleton = new Lazy<State>(() => new State());
 
         public Parking CurrentParking { get; set; }
-        public Dictionary<string, Parking> AvailableParkings { get; set; }
+
+        public Dictionary<string, Parking> AvailableParkings => Parking.GetByLicensePlate(CurrentCountry, LicensePlate);
+
         public Translator CurrentLanguage { get; set; }
         public Dictionary<Language, Translator> AvailableLanguages { get; }
         public Country CurrentCountry { get; set; }
@@ -22,6 +25,7 @@ namespace ParkingApp {
         public LocatorService Locator => LocatorService.Instance;
         public string LicensePlate { get; set; }
         public int HourlyPrice { get; }
+        public string DatabasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Database.json");
 
         private State() {
             AvailableLanguages = new Dictionary<Language, Translator> {

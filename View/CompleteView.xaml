@@ -8,8 +8,32 @@
              xmlns:parkingApp="clr-namespace:ParkingApp"
              DataContext="{Binding Locator.Complete, Source={x:Static parkingApp:State.Instance}}">
     <StackPanel>
-        <Button Content="Back" Command="{Binding Locator.Window.ChangeViewCommand, Source={x:Static parkingApp:State.Instance}}" CommandParameter="{x:Static enum:View.HOME}" />
-        <Button Content="Pay" Command="{Binding Locator.Window.ChangeViewCommand, Source={x:Static parkingApp:State.Instance}}" CommandParameter="{x:Static enum:View.PAYMENT}" />
-        <Label>This is the page where the parking should be completed.</Label>
+        <Grid Visibility="{Binding CurrentParking, Converter={StaticResource ValueToVisibilityConverter}, ConverterParameter='true'}">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold"
+                   Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='REGISTERED_PARKING_HEADER', Source={x:Static parkingApp:State.Instance}}" />
+
+            <Button Grid.Row="1" Width="200"
+                    Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='BUTTON_RETURN', Source={x:Static parkingApp:State.Instance}}"
+                    Command="{Binding Locator.Window.ChangeViewCommand, Source={x:Static parkingApp:State.Instance}}" CommandParameter="{x:Static enum:View.HOME}" />
+        </Grid>
+
+        <Grid Visibility="{Binding CurrentParking, Converter={StaticResource ValueToVisibilityConverter}, ConverterParameter='false', Source={x:Static parkingApp:State.Instance}}">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold"
+                   Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='PAID_PARKING_HEADER', Source={x:Static parkingApp:State.Instance}}" />
+
+            <Button Grid.Row="1" Width="200"
+                    Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='BUTTON_RETURN', Source={x:Static parkingApp:State.Instance}}"
+                    Command="{Binding Locator.Window.ChangeViewCommand, Source={x:Static parkingApp:State.Instance}}" CommandParameter="{x:Static enum:View.HOME}" />
+        </Grid>
     </StackPanel>
 </UserControl>

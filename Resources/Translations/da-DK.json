@@ -7,11 +7,19 @@
   "REGISTER_PARKING_HEADER": "Påbegynd parkering",
   "REGISTER_PARKING_PRICE": "Pris per time:",
   "BUTTON_REGISTER_PARKING": "Bekræft",
-  
+
+  "REGISTERED_PARKING_HEADER": "Parkering påbegyndt",
+
   "COMPLETE_PARKING_HEADER": "Afslut parkering",
   "COMPLETE_PARKING_STARTED": "Parkeringen blev registreret:",
   "COMPLETE_PARKING_PRICE": "Pris totalt:",
   "BUTTON_COMPLETE_PARKING": "Betal og afslut parkering",
+
+  "PAY_PARKING_HEADER": "Gennemfør betaling",
+  "PAY_PARKING_DESCRIPTION": "Følg vejledningen på betalings terminalen.",
+
+  "PAID_PARKING_HEADER": "Parkering betalt",
   
+  "BUTTON_RETURN": "Afslut",
   "BUTTON_CANCEL": "Fortryd"
 }

@@ -151,7 +151,9 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="packages.config" />
-    <EmbeddedResource Include="Resources\Database.json" />
+    <Content Include="Resources\Database.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Resources\Images\da-DK.png" />
     <Resource Include="Resources\Images\en-GB.png" />
     <EmbeddedResource Include="Resources\Translations\da-DK.json" />

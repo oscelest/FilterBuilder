@@ -60,7 +60,6 @@ namespace ParkingApp.ViewModel {
         }
 
         public void ExecuteLicensePlateLookupCommand() {
-            State.Instance.AvailableParkings = Parking.GetByLicensePlate(Country, LicensePlate);
             State.Instance.CurrentParking = State.Instance.AvailableParkings.Values.FirstOrDefault(x => x.TimeCompleted == null);
             State.Instance.Locator.Window.ChangeViewCommand.Execute(Enum.View.REGISTER);
         }

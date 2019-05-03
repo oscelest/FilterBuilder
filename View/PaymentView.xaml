@@ -4,12 +4,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:enum="clr-namespace:ParkingApp.Enum"
              xmlns:parkingApp="clr-namespace:ParkingApp"
              DataContext="{Binding Locator.Payment, Source={x:Static parkingApp:State.Instance}}">
-    <StackPanel>
-        <Button Content="Back" Command="{Binding Locator.Window.ChangeViewCommand, Source={x:Static parkingApp:State.Instance}}" CommandParameter="{x:Static enum:View.HOME}" />
-        <Button Content="Complete" Command="{Binding Locator.Window.ChangeViewCommand, Source={x:Static parkingApp:State.Instance}}" CommandParameter="{x:Static enum:View.HOME}" />
-        <Label>This is where credit card information should be entered.</Label>
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold"
+               Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='PAY_PARKING_HEADER', Source={x:Static parkingApp:State.Instance}}" />
+        <Label Grid.Row="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold"
+               Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='PAY_PARKING_DESCRIPTION', Source={x:Static parkingApp:State.Instance}}" />
+    </Grid>
 </UserControl>
