@@ -10,6 +10,7 @@ namespace ParkingApp.Enum {
 
         public static Language DANISH { get; } = new Language("da-DK");
         public static Language ENGLISH { get; } = new Language("en-GB");
+        public static Language MISSING { get; } = new Language("missing");
 
         public override string ToString() {
             return _value;
@@ -21,6 +22,8 @@ namespace ParkingApp.Enum {
                     return DANISH;
                 case "en-US":
                     return ENGLISH;
+                case "missing":
+                    return MISSING;
                 default:
                     throw new NotImplementedException();
             }

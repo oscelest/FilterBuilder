@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingApp", "ParkingApp.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingAppUpdater", "ParkingAppUpdater\ParkingAppUpdater.csproj", "{21207B22-E405-43CB-B861-2B3A603F06FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingAppTest", "ParkingAppTest\ParkingAppTest.csproj", "{626420A0-1D2D-4598-8D05-1F11F214865F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{21207B22-E405-43CB-B861-2B3A603F06FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21207B22-E405-43CB-B861-2B3A603F06FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21207B22-E405-43CB-B861-2B3A603F06FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{626420A0-1D2D-4598-8D05-1F11F214865F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{626420A0-1D2D-4598-8D05-1F11F214865F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{626420A0-1D2D-4598-8D05-1F11F214865F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{626420A0-1D2D-4598-8D05-1F11F214865F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
