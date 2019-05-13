@@ -37,7 +37,6 @@ namespace ParkingApp.ViewModel {
         public void ExecuteRegisterParkingCommand() {
             Parking.Post(State.Instance.CurrentCountry, State.Instance.LicensePlate);
             CurrentParking = State.Instance.AvailableParkings.Values.FirstOrDefault(x => x.TimeCompleted == null);
-            Debug.WriteLine(CurrentParking);
             State.Instance.Locator.Window.ChangeViewCommand.Execute(Enum.View.COMPLETE);
         }
 
@@ -47,8 +46,6 @@ namespace ParkingApp.ViewModel {
 //            Console.WriteLine("Please put in your credit card.");
 //            Parking.Test();
             CurrentParking = null;
-            Debug.WriteLine(CurrentParking);
-
             State.Instance.Locator.Window.ChangeViewCommand.Execute(Enum.View.COMPLETE);
         }
     }

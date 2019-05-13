@@ -46,7 +46,7 @@ namespace ParkingApp.ViewModel {
         }
 
         public WindowViewModel() {
-            Title = "Item Filter Builder";
+            Title = "Parking Application";
             ChangeViewCommand = new RelayCommand<Enum.View>(ExecuteChangeViewCommand);
             ChangeLanguageCommand = new RelayCommand<Language>(ExecuteChangeLanguageCommand);
             ExecuteCheckUpdateCommand();

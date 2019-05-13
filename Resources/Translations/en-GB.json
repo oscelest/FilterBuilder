@@ -1,8 +1,25 @@
 {
   "LANGUAGE": "Language",
   "WELCOME_HEADER": "Welcome!",
-  "WELCOME_DESCRIPTION": "Please select whether you want to register or complete your parking.",
+  "WELCOME_DESCRIPTION": "To start or complete your parking, please enter your license plate and select the country of origin.",
   "BUTTON_LICENSE_PLATE_SUBMIT": "Search",
-  "REGISTER_PARKING": "Register Parking",
-  "COMPLETE_PARKING": "Complete Parking"
+
+  "REGISTER_PARKING_HEADER": "Register parking",
+  "REGISTER_PARKING_PRICE": "Price per hour:",
+  "BUTTON_REGISTER_PARKING": "Confirm",
+
+  "REGISTERED_PARKING_HEADER": "Parking registered",
+
+  "COMPLETE_PARKING_HEADER": "Complete parking",
+  "COMPLETE_PARKING_STARTED": "Parking was registered at:",
+  "COMPLETE_PARKING_PRICE": "Price total:",
+  "BUTTON_COMPLETE_PARKING": "Pay and complete parking",
+
+  "PAY_PARKING_HEADER": "Complete payment",
+  "PAY_PARKING_DESCRIPTION": "Follow the instruction on the card terminal.",
+
+  "PAID_PARKING_HEADER": "Parking payment completed",
+
+  "BUTTON_RETURN": "Return",
+  "BUTTON_CANCEL": "Cancel"
 }

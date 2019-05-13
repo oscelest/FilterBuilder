@@ -7,7 +7,6 @@ namespace ParkingApp.ViewModel {
         
         public Parking CurrentParking {
             get {
-                Debug.WriteLine(State.Instance.CurrentParking);
                 return State.Instance.CurrentParking;
             }
             set {

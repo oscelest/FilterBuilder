@@ -9,8 +9,10 @@
         Title="{Binding Title}" Width="800" Height="600" Left="0" Top="0">
     <DockPanel LastChildFill="True">
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="60" Margin="0,10,10,0">
-            <Label Content="{Binding Path=ChangeLanguageCommand, Converter={StaticResource TranslationConverter}, ConverterParameter='LANGUAGE', UpdateSourceTrigger=PropertyChanged}"
-                   Width="110" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
+            
+            <Label Width="110" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right"
+                   Content="{Binding Locator.Window.CurrentLanguage, Converter={StaticResource TranslationConverter}, ConverterParameter='LANGUAGE', Source={x:Static parkingApp:State.Instance}}" />
+            
             <ItemsControl ItemsSource="{Binding Locator.Window.AvailableLanguages, Source={x:Static parkingApp:State.Instance}}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>

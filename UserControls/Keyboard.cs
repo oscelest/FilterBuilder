@@ -4,9 +4,8 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
 namespace ParkingApp.Helper {
-    
     public delegate void CallbackDelegate(char character);
-    
+
     public partial class KeyboardControl {
         public static readonly DependencyProperty KeyboardProperty =
             DependencyProperty.Register("Keyboard", typeof(Keyboard), typeof(KeyboardControl), new PropertyMetadata(new Keyboard(), KeyboardPropertyCallback));
@@ -29,7 +28,7 @@ namespace ParkingApp.Helper {
             dValue?.Populate(resource);
         }
     }
-    
+
     public class KeyboardKeyStyle {
         public double? Width { get; set; }
     }
@@ -113,60 +112,60 @@ namespace ParkingApp.Helper {
         }
 
         public class KeyboardRow {
-            private readonly List<KeyboardKey> _keys;
+            public readonly List<KeyboardKey> Keys;
 
             public KeyboardRow() {
-                _keys = new List<KeyboardKey>();
+                Keys = new List<KeyboardKey>();
             }
 
             public KeyboardRow(List<char> keys, CallbackDelegate callback) {
-                _keys = new List<KeyboardKey>();
+                Keys = new List<KeyboardKey>();
                 foreach (var key in keys) PushKey(key, callback);
             }
 
             public KeyboardRow(List<char> keys, KeyboardKeyStyle keyStyle, CallbackDelegate callback) {
-                _keys = new List<KeyboardKey>();
+                Keys = new List<KeyboardKey>();
                 foreach (var key in keys) PushKey(key, keyStyle, callback);
             }
 
             public KeyboardRow UnshiftKey(char key, CallbackDelegate callback) {
-                _keys.Insert(0, new KeyboardKey(key, callback));
+                Keys.Insert(0, new KeyboardKey(key, callback));
                 return this;
             }
 
             public KeyboardRow UnshiftKey(char key, KeyboardKeyStyle keyStyle, CallbackDelegate callback) {
-                _keys.Insert(0, new KeyboardKey(key, keyStyle, callback));
+                Keys.Insert(0, new KeyboardKey(key, keyStyle, callback));
                 return this;
             }
 
             public KeyboardRow InsertKey(int index, char key, CallbackDelegate callback) {
-                _keys.Insert(index, new KeyboardKey(key, callback));
+                Keys.Insert(index, new KeyboardKey(key, callback));
                 return this;
             }
 
             public KeyboardRow InsertKey(int index, char key, KeyboardKeyStyle keyStyle, CallbackDelegate callback) {
-                _keys.Insert(index, new KeyboardKey(key, keyStyle, callback));
+                Keys.Insert(index, new KeyboardKey(key, keyStyle, callback));
                 return this;
             }
 
             public KeyboardRow PushKey(char key, CallbackDelegate callback) {
-                _keys.Add(new KeyboardKey(key, callback));
+                Keys.Add(new KeyboardKey(key, callback));
                 return this;
             }
 
             public KeyboardRow PushKey(char key, KeyboardKeyStyle keyStyle, CallbackDelegate callback) {
-                _keys.Add(new KeyboardKey(key, keyStyle, callback));
+                Keys.Add(new KeyboardKey(key, keyStyle, callback));
                 return this;
             }
 
             public Grid ToElement() {
                 var row = new Grid();
-                for (var column = 0; column < _keys.Count; column++) {
-                    var button = _keys[column].ToElement();
+                for (var column = 0; column < Keys.Count; column++) {
+                    var button = Keys[column].ToElement();
                     row.Children.Add(button);
                     Grid.SetColumn(button, column);
                     row.ColumnDefinitions.Add(new ColumnDefinition {
-                        Width = new GridLength(_keys[column].KeyStyle.Width ?? 1, GridUnitType.Star)
+                        Width = new GridLength(Keys[column].KeyStyle.Width ?? 1, GridUnitType.Star)
                     });
                 }
 
@@ -176,27 +175,27 @@ namespace ParkingApp.Helper {
 
         public class KeyboardKey {
             public readonly KeyboardKeyStyle KeyStyle;
-            private readonly char _symbol;
-            private readonly CallbackDelegate _callback;
+            public readonly char Symbol;
+            public readonly CallbackDelegate Callback;
 
             public KeyboardKey(char symbol, CallbackDelegate callback) {
-                _symbol = symbol;
-                _callback = callback;
+                Symbol = symbol;
+                Callback = callback;
                 KeyStyle = new KeyboardKeyStyle();
             }
 
             public KeyboardKey(char symbol, KeyboardKeyStyle keyStyle, CallbackDelegate callback) {
-                _symbol = symbol;
-                _callback = callback;
+                Symbol = symbol;
+                Callback = callback;
                 KeyStyle = keyStyle;
             }
 
             public Border ToElement() {
                 var button = new Button {
-                    Content = _symbol,
+                    Content = Symbol,
                     Style = Application.Current.FindResource("KeyboardButtonStyle") as Style
                 };
-                button.AddHandler(ButtonBase.ClickEvent, new RoutedEventHandler((x, o) => _callback(_symbol)), true);
+                button.AddHandler(ButtonBase.ClickEvent, new RoutedEventHandler((x, o) => Callback(Symbol)), true);
                 var border = new Border {
                     Child = button,
                     Style = Application.Current.FindResource("KeyboardButtonBorderStyle") as Style,
