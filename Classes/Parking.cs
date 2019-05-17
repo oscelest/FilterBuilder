@@ -1,15 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Windows.Media;
 using Newtonsoft.Json;
 using ParkingApp.Enum;
-using static System.Int32;
 
 namespace ParkingApp.Classes {
     public class Parking {
@@ -18,8 +12,6 @@ namespace ParkingApp.Classes {
         [JsonProperty("time_completed")] public DateTime? TimeCompleted { get; set; }
 
         private static Dictionary<string, Dictionary<string, List<Parking>>> _database;
-
-        public Parking() { }
 
         private static void ReadDatabase() {
             _database = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, List<Parking>>>>(File.ReadAllText(State.Instance.DatabasePath));

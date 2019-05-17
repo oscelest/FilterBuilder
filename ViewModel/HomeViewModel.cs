@@ -1,14 +1,11 @@
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
-using ParkingApp.Helper;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
-using ParkingApp.Classes;
 using ParkingApp.Enum;
-using Keyboard = ParkingApp.Helper.Keyboard;
+using ParkingApp.UserControls;
+using Keyboard = ParkingApp.UserControls.Keyboard;
 
 namespace ParkingApp.ViewModel {
     public class HomeViewModel : ViewModelBase {
@@ -50,7 +47,6 @@ namespace ParkingApp.ViewModel {
         }
 
         private void KeyboardDeleteLetter(char letter) {
-            // TODO: Should check for length
             if (LicensePlate.Length == 0) return;
             LicensePlate = LicensePlate.Remove(LicensePlate.Length - 1);
         }

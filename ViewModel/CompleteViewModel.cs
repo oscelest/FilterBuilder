@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using GalaSoft.MvvmLight;
 using ParkingApp.Classes;
 

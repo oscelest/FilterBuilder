@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using NUnit.Framework;
 using ParkingApp.Classes;
 using ParkingApp.Enum;
-using ParkingApp.Helper;
-using ParkingAppTest.Test;
+using ParkingApp.UserControls;
 
 namespace ParkingAppTest {
     [TestFixture]
@@ -15,8 +13,8 @@ namespace ParkingAppTest {
             Assert.DoesNotThrow(() => new Translator(Language.DANISH, "da-DK"));
             Assert.Throws<FileNotFoundException>(() => new Translator(Language.MISSING, "missing"));
             Assert.True(new Translator(Language.DANISH, "da-DK").Translate("LANGUAGE") == "Sprog");
-            Assert.True(TranslatorTest.TestTranslate(Language.DANISH, "da-DK", "LANGUAGES") == "TRANSLATION_MISSING");
-            Assert.True(TranslatorTest.TestTranslate(Language.MISSING, "da-DK", "LANGUAGE") == "");
+            Assert.True(new Translator(Language.DANISH, "da-DK").Translate("LANGUAGES") == "TRANSLATION_MISSING");
+            Assert.True(new Translator(Language.MISSING, "da-DK").Translate("LANGUAGE") == "");
         }
 
         [Test]

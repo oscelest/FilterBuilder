@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using GalaSoft.MvvmLight;
 using ParkingApp.Enum;
-using ParkingApp.Helper;
 using ParkingApp.Classes;
 using ParkingApp.ViewModel;
 

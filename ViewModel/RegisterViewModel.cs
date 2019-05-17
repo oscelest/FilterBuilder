@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
@@ -42,9 +41,7 @@ namespace ParkingApp.ViewModel {
 
         public void ExecuteCompleteParkingCommand() {
             Parking.Put(State.Instance.CurrentCountry, State.Instance.LicensePlate);
-//            State.Instance.Locator.Window.ChangeViewCommand.Execute(Enum.View.PAYMENT);
-//            Console.WriteLine("Please put in your credit card.");
-//            Parking.Test();
+//          TODO: Create the payment window changer.
             CurrentParking = null;
             State.Instance.Locator.Window.ChangeViewCommand.Execute(Enum.View.COMPLETE);
         }

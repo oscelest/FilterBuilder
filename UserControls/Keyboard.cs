@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
-namespace ParkingApp.Helper {
+namespace ParkingApp.UserControls {
     public delegate void CallbackDelegate(char character);
 
     public partial class KeyboardControl {
